@@ -10,10 +10,15 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var rent: UILabel!
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var persons: UILabel!
+    
+    
+    @IBOutlet weak var beds: UILabel!
+    @IBOutlet weak var baths: UILabel!
+    @IBOutlet weak var area: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

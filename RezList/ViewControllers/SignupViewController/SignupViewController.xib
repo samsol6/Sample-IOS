@@ -88,9 +88,12 @@
                             <state key="normal" title="Sign up">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="signUpBtnClicked:" destination="-1" eventType="touchUpInside" id="uUh-h2-RxW"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGU-Qu-yBl">
-                            <rect key="frame" x="7" y="617" width="361" height="30"/>
+                            <rect key="frame" x="7" y="637" width="361" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="sNu-Iq-nay"/>
                             </constraints>
@@ -102,9 +105,10 @@
                             </connections>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="57S-MD-NaX" firstAttribute="leading" secondItem="Ria-UV-b2a" secondAttribute="leading" constant="7" id="1Q3-Uc-HXc"/>
-                        <constraint firstAttribute="bottom" secondItem="vGU-Qu-yBl" secondAttribute="bottom" constant="20" id="3jy-07-Z2b"/>
+                        <constraint firstAttribute="bottom" secondItem="vGU-Qu-yBl" secondAttribute="bottom" id="3jy-07-Z2b"/>
                         <constraint firstItem="Pcd-Zu-Nks" firstAttribute="leading" secondItem="Ria-UV-b2a" secondAttribute="leading" constant="7" id="5yL-0J-Lrs"/>
                         <constraint firstAttribute="trailing" secondItem="vGU-Qu-yBl" secondAttribute="trailing" constant="7" id="6kY-y5-skw"/>
                         <constraint firstItem="eh1-hC-x7u" firstAttribute="top" secondItem="Ria-UV-b2a" secondAttribute="top" constant="48" id="7Qr-qa-a6D"/>
@@ -115,7 +119,7 @@
                         <constraint firstAttribute="trailing" secondItem="Avr-32-6HW" secondAttribute="trailing" constant="7" id="Hcd-ig-C95"/>
                         <constraint firstItem="Avr-32-6HW" firstAttribute="leading" secondItem="Ria-UV-b2a" secondAttribute="leading" constant="7" id="Jrh-b9-vKt"/>
                         <constraint firstItem="Pcd-Zu-Nks" firstAttribute="top" secondItem="57S-MD-NaX" secondAttribute="bottom" constant="30" id="LFf-R5-kRp"/>
-                        <constraint firstItem="vGU-Qu-yBl" firstAttribute="top" secondItem="Pcd-Zu-Nks" secondAttribute="bottom" constant="87" id="Mhy-Kf-MrD"/>
+                        <constraint firstItem="vGU-Qu-yBl" firstAttribute="top" secondItem="Pcd-Zu-Nks" secondAttribute="bottom" constant="107" id="Mhy-Kf-MrD"/>
                         <constraint firstAttribute="trailing" secondItem="Pcd-Zu-Nks" secondAttribute="trailing" constant="7" id="NcQ-8y-fuD"/>
                         <constraint firstAttribute="trailing" secondItem="IML-Id-HRk" secondAttribute="trailing" constant="7" id="R4D-Yc-pMD"/>
                         <constraint firstItem="vGU-Qu-yBl" firstAttribute="leading" secondItem="Ria-UV-b2a" secondAttribute="leading" constant="7" id="R7r-Re-czu"/>

@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+import MBProgressHUD
 
-class HomeViewController: UIViewController, UITextFieldDelegate {
+class HomeViewController: ValidationViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -69,6 +70,10 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     
     
     //Mark: UITextfield delegate functions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("hello")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailField.tintColor = UIColor.white
@@ -130,36 +135,17 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
         let strEmail=emailField.text!;
         let strPassword=passwordField.text!;
         if strEmail.characters.count==0{
-            let alert = UIAlertController(title: "Alert", message: "Email field can't be blank.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-//        }else if !isValidEmail(strEmail: strEmail){
-//            let alert = UIAlertController(title: "Alert", message: "Email is invalid.", preferredStyle: UIAlertControllerStyle.alert)
-//            
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//            
-//            self.present(alert, animated: true, completion: nil)
+            ShowAlert("Email field can't be blank.")
+        }else if !isValidEmail(strEmail: strEmail){
+            ShowAlert("Email is invalid.")
         }else if strPassword.characters.count == 0{
-            let alert = UIAlertController(title: "Alert", message: "Password field can't be blank.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-            
-        }else if strPassword.characters.count < 8{
-            let alert = UIAlertController(title: "Alert", message: "Password length should be greate or equal to 8.", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-        }else{
+           ShowAlert("Password field can't be blank.")
+        }
+        else{
             let loadingNotification = MBProgressHUD.showAdded(to: self.view, animated: true)
             loadingNotification.label.text = "Loading"
-            //            let urlSignIn: String = "https://playinn-admin.herokuapp.com/api/v1/signin"
             let urlSignIn: String = "https://agile-depths-93396.herokuapp.com/api/v1/signin"
-            let userObject = ["user": ["email": strEmail, "password": strPassword]];
+            let userObject = ["email": strEmail, "password": strPassword];
             print("params are ", userObject)
             Alamofire.request(urlSignIn, method: .post, parameters: userObject, encoding: JSONEncoding.default)
                 .responseJSON { response in
@@ -168,37 +154,29 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
                     if response.result.isSuccess  && response.response?.statusCode == 200{
                         let dataResult: NSDictionary = (response.result.value as! NSDictionary?)!
                         if dataResult["user"] != nil {
-                            let dict = (dataResult.value(forKey: "user") as AnyObject) as! NSDictionary
-                            let id : Int = (dict.value(forKey: "id") as AnyObject) as! Int
-                            let token = (dict.value(forKey: "authentication_token") as AnyObject) as! String
-                            let strName = dict.value(forKey: "first_name") as? String
-                            let age = dict.value(forKey: "age") as? String
-                            let location = dict.value(forKey: "location") as? String
-                            let pictureUrl = dict.value(forKey: "picture") as? String
-                            let email = dict.value(forKey: "email") as? String
-                            let lastName = dict.value(forKey: "last_name") as?  String
-                            let phone = dict["phone"] as? String
-                            UserDefaults.standard.set(String(describing: id), forKey: "id")
-                            UserDefaults.standard.set(token, forKey: "authentication_token")
-                            UserDefaults.standard.set(true,forKey:"isUserLoggedIn")
-                            UserDefaults.standard.set(strName, forKey: "userName");
-                            UserDefaults.standard.set(age, forKey: "age")
-                            UserDefaults.standard.set(location, forKey: "location")
-                            UserDefaults.standard.set(pictureUrl, forKey: "pictureUrl")
-                            UserDefaults.standard.set(email, forKey: "email")
-                            UserDefaults.standard.set(lastName, forKey: "lastName")
-                            UserDefaults.standard.set(phone, forKey: "phone")
-                            UserDefaults.standard.synchronize()
-                            self.performSegue(withIdentifier: "Home", sender: self)
+                            
+                            let vc = DashboardViewController(
+                               nibName: "DashboardViewController",
+                               bundle: nil)
+                            self.present(vc, animated: true, completion: nil)
                         }
                         else{
                             let strMessageError: NSString = dataResult.value(forKey: "message") as! NSString
-                            self.ShowAlert(strMessageError as String)
+                            let alert = UIAlertController(title: "Try again", message: "Invalid credentials", preferredStyle: UIAlertControllerStyle.alert)
+                            
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                     else{
-                        self.ShowAlert("Failed, Please try again.")
+                        let alert = UIAlertController(title: "Alert", message: "Failed, Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        
+                        self.present(alert, animated: true, completion: nil)
                     }
+                }
             }
 
     }

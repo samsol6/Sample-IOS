@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let feCal = FeeCalculatorViewController(nibName: "FeeCalculatorViewController", bundle: nil)
         feCal.tabBarItem.title = "calculator"
 
-        let controllers = [dashboardVC,notificationVc, searchVc,feCal, filterVc]
+        let controllers = [ dashboardVC,notificationVc, searchVc, feCal, filterVc]
         //notificationVc, profileVc, filterVc, dashboardVC,
         tabBarController?.viewControllers = controllers
 //        window?.rootViewController = tabBarController

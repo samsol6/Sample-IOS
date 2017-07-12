@@ -68,7 +68,48 @@ class FlatFeeCalculatorViewController: UIViewController {
     func sliderChanged(sender: UISlider){
         print(sender.value)
 //        [self sendActionsForControlEvents:UIControlEventValueChanged];
-        self.HomeRangeValue.text = String(sender.value)
+        var editedVal : Int = Int(sender.value*1000)
+        var strVal : String!
+        strVal = String(editedVal)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        let finalNumber = numberFormatter.number(from: strVal)
+        var str : String!
+        str = String(describing: finalNumber!)
+        self.HomeRangeValue.text = "$"+str
+        
+        //first column
+        let tradNum : Int = Int(finalNumber!)*3/100
+        self.seller1.text = "$"+String(tradNum)
+        self.buyer1.text = "$"+String(tradNum)
+        self.totalCommission1.text = "$"+String(tradNum+tradNum)
+        
+        //2nd column
+        let IntFinalNum : Int = Int(finalNumber!)
+        var seller2Val : Float
+        if(IntFinalNum < 850000){
+            self.seller2.text = "$3999"
+            seller2Val = 3999
+        }
+        else{
+            self.seller2.text = "$5999"
+            seller2Val = 5999
+        }
+        
+        let buyer2Val : Float = (Float(IntFinalNum) * 2.5/100)
+        self.buyer2.text = "$"+String(buyer2Val)
+        self.totalCommission2.text = "$"+String(seller2Val + buyer2Val)
+        
+        //3rd column
+        var seller3Val : Float = Float(tradNum)-seller2Val
+        self.seller3.text = "$"+String(seller3Val)
+        
+        var buyer3Val : Float = Float(tradNum) - buyer2Val
+        self.buyer3.text = "$"+String(buyer3Val)
+        
+        self.totalCommission3.text = "$"+String(seller3Val+buyer3Val)
+        
+
     }
     func addLabelBorders(){
         //setting border

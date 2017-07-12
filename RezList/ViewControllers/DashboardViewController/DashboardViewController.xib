@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="RezList" customModuleProvider="target">
             <connections>
                 <outlet property="tbl" destination="ggq-Dk-Vj0" id="yvh-Lq-Im9"/>
+                <outlet property="topView" destination="mIH-fm-iLM" id="k2I-8K-Vjt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -72,12 +73,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ggq-Dk-Vj0" secondAttribute="bottom" id="5fg-2c-oKr"/>
+                <constraint firstItem="ggq-Dk-Vj0" firstAttribute="leading" secondItem="mIH-fm-iLM" secondAttribute="leading" id="3kn-sL-gKI"/>
+                <constraint firstItem="ggq-Dk-Vj0" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="bottom" constant="50" id="4Z1-Nb-y01"/>
                 <constraint firstItem="mIH-fm-iLM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8zq-kW-AjE"/>
-                <constraint firstItem="ggq-Dk-Vj0" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="bottom" constant="50" id="TSC-gh-Ydz"/>
+                <constraint firstAttribute="bottom" secondItem="ggq-Dk-Vj0" secondAttribute="bottom" id="IXg-Ht-Q7J"/>
+                <constraint firstItem="ggq-Dk-Vj0" firstAttribute="trailing" secondItem="mIH-fm-iLM" secondAttribute="trailing" id="SPE-xd-GRB"/>
                 <constraint firstAttribute="trailing" secondItem="mIH-fm-iLM" secondAttribute="trailing" id="eCw-vM-3mS"/>
-                <constraint firstItem="ggq-Dk-Vj0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fAe-LE-iyF"/>
-                <constraint firstAttribute="trailing" secondItem="ggq-Dk-Vj0" secondAttribute="trailing" id="gvZ-7B-vxy"/>
                 <constraint firstItem="mIH-fm-iLM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="hp4-Jz-tL8"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="146.5"/>

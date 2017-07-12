@@ -11,6 +11,8 @@ import UIKit
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tbl: UITableView!
+    
+    @IBOutlet weak var topView: UIView!
     var optionsArr = NSMutableArray()
     var iconsArray = NSMutableArray()
     
@@ -20,6 +22,21 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         
         //adding elements to the array
+        
+        //new editing
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
+        appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
+        appDelegate.window?.rootViewController = appDelegate.tabBarController
+        
+//        let tabBarHeight  = appDelegate.tabBarController?.tabBar.frame.size.height
+        
+        //end
+        
+        
         optionsArr = ["Profile", "Explore", "Flat Fee Calculator", "Notifications", "Settings"]
         iconsArray = ["contact.png", "search_white.png", "white_cal.png", "white_bell.png" , "white_setting.png"]
         
