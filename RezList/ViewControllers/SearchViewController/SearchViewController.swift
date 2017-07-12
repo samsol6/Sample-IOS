@@ -20,19 +20,27 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var map: MKMapView!
+    
+    
     var jsonArray = NSArray()
+    var myLocations = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set delegate and data source of tableview to this controller
         
-//        map.delegate = self
-        
+        //correct code...*******************
+//        let annotation = MKPointAnnotation()
+//        
+//        annotation.coordinate = CLLocationCoordinate2D(latitude: 11.12, longitude: 12.11)
+//        map.addAnnotation(annotation)
+//        
 //        let locations = [
 //            ["title": "New York, NY",    "latitude": 40.713054, "longitude": -74.007228],
 //            ["title": "Los Angeles, CA", "latitude": 34.052238, "longitude": -118.243344],
-//            ["title": "Chicago, IL",     "latitude": 41.883229, "longitude": -87.632398]
+//            ["title": "Chicago, IL",     "latitude": 41.883229, "longitude": -87.632398],
+//            ["title": "Chicago, IL",     "latitude": 45.883229, "longitude": -86.632398]
 //        ]
 //        
 //        for location in locations {
@@ -41,13 +49,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            annotation.coordinate = CLLocationCoordinate2D(latitude: location["latitude"] as! Double, longitude: location["longitude"] as! Double)
 //            map.addAnnotation(annotation)
 //        }
-//        CLLocationDegrees minLatitude = DBL_MAX;
-//        CLLocationDegrees maxLatitude = -DBL_MAX;
-//        CLLocationDegrees minLongitude = DBL_MAX;
-//        CLLocationDegrees maxLongitude = -DBL_MAX;
-        
-
-        
+//        
+//        map.showAnnotations(map.annotations, animated: true)
+        //end correct code...*******************************
         
         self.tbl.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
         self.tbl.delegate = self
@@ -105,6 +109,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let propertyObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
         let addressObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
         let photoObj : NSArray = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
+        let geoLocationObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
         
         //parsing data from property object
         let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
@@ -121,6 +126,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.beds.text = String(bedRooms)+" Beds"
         cell.baths.text = String(numBath)+" baths"
         cell.area.text = String(area)+" SqFt"
+        
         let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
         
         // getting photo url from the photo object
@@ -159,6 +165,22 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func mapBtnClicked(_ sender: UIButton) {
         self.tbl.isHidden = true
         self.mapView.isHidden = false
+        
+        var count = 0
+        while ( count < myLocations.count){
+            if let location : NSMutableDictionary = myLocations.object(at: count) as? NSMutableDictionary{
+                let annotation = MKPointAnnotation()
+                let title : String = (location.value(forKey: "title") as? String)!
+                let lat : Double = (location.value(forKey: "latitude") as? Double)!
+                let long : Double = (location.value(forKey: "longitude") as? Double)!
+                annotation.title = title
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                map.addAnnotation(annotation)
+                
+                count += 1
+            }
+        }
+        map.showAnnotations(map.annotations, animated: true)
     }
     
     //Mark: getting data for this screen for houses for sale
@@ -178,11 +200,53 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if let json : NSArray = response.result.value as? NSArray{
                     print(json)
                     self.jsonArray = json
+                    
+                    self.getGeoLocation()
+                    
                     self.tbl.reloadData()
                 }
             }
         }
     }
+    
+    func getGeoLocation(){
+        //making array of geoLocation Coordinates
+        var count = 0
+        while (count < jsonArray.count){
+            let addressObj : NSDictionary = (((jsonArray.object(at: count) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
+            let geoLocationObj : NSDictionary = (((jsonArray.object(at: count) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
+            
+            
+            let locations = [
+                ["title": "New York, NY",    "latitude": 40.713054, "longitude": -74.007228],
+                ["title": "Los Angeles, CA", "latitude": 34.052238, "longitude": -118.243344],
+                ["title": "Chicago, IL",     "latitude": 41.883229, "longitude": -87.632398],
+                ["title": "Chicago, IL",     "latitude": 45.883229, "longitude": -86.632398]
+            ]
+            
+            let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
+            var obj = NSMutableDictionary()
+            var latitude = Double()
+            var longitude = Double()
+            if let lat: Double = (((geoLocationObj as AnyObject).value(forKey: "lat")as AnyObject)as? Double)!{
+                latitude = lat
+            }
+            if let long: Double = (((geoLocationObj as AnyObject).value(forKey: "lng")as AnyObject)as? Double)!{
+                longitude = long
+            }
+            //        obj = ["title" : address, "latitude": latitude, "longitude": longitude]
+            obj.setValue(address, forKey: "title")
+            obj.setValue(latitude, forKey: "latitude")
+            obj.setValue(longitude, forKey: "longitude")
+            myLocations.add(obj)
+            print(obj)
+            print(myLocations)
+            
+            count += 1
+        }
+    }
+        //end
+
     
     //end...
     

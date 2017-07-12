@@ -16,6 +16,8 @@
 		7F6A4BC51F0CCE32002C398B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4BC31F0CCE32002C398B /* HomeViewController.swift */; };
 		7F6A4BC61F0CCE32002C398B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6A4BC41F0CCE32002C398B /* HomeViewController.xib */; };
 		7FB675111F1539C300CE927D /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB675101F1539C300CE927D /* ValidationViewController.swift */; };
+		7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC652C71F16243E00E51170 /* ScannerViewController.swift */; };
+		7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC652C81F16243E00E51170 /* ScannerViewController.xib */; };
 		7FF259531F0CE81A008FAF89 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF259511F0CE81A008FAF89 /* SearchViewController.swift */; };
 		7FF259541F0CE81A008FAF89 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF259521F0CE81A008FAF89 /* SearchViewController.xib */; };
 		7FF259A11F0CFF85008FAF89 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FF259571F0CFF85008FAF89 /* 02.jpg */; };
@@ -162,6 +164,8 @@
 		7F6A4BC31F0CCE32002C398B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController/HomeViewController.swift; sourceTree = "<group>"; };
 		7F6A4BC41F0CCE32002C398B /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewControllers/HomeViewController/HomeViewController.xib; sourceTree = "<group>"; };
 		7FB675101F1539C300CE927D /* ValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationViewController.swift; path = ViewControllers/ValidationViewController/ValidationViewController.swift; sourceTree = "<group>"; };
+		7FC652C71F16243E00E51170 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = ViewControllers/ScannerViewController/ScannerViewController.swift; sourceTree = "<group>"; };
+		7FC652C81F16243E00E51170 /* ScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScannerViewController.xib; path = ViewControllers/ScannerViewController/ScannerViewController.xib; sourceTree = "<group>"; };
 		7FF259511F0CE81A008FAF89 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ViewControllers/SearchViewController/SearchViewController.swift; sourceTree = "<group>"; };
 		7FF259521F0CE81A008FAF89 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ViewControllers/SearchViewController/SearchViewController.xib; sourceTree = "<group>"; };
 		7FF259571F0CFF85008FAF89 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 02.jpg; path = images/02.jpg; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 		7F6A4BC21F0CCD41002C398B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7FC652C61F16241300E51170 /* ScannerViewController */,
 				7FB6750F1F1539A600CE927D /* ValidationViewController */,
 				7FF25A3B1F139F26008FAF89 /* NotificationSettingViewController */,
 				7FF25A361F1380DF008FAF89 /* FeeCalculatorViewController */,
@@ -402,6 +407,15 @@
 				7FB675101F1539C300CE927D /* ValidationViewController.swift */,
 			);
 			name = ValidationViewController;
+			sourceTree = "<group>";
+		};
+		7FC652C61F16241300E51170 /* ScannerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FC652C71F16243E00E51170 /* ScannerViewController.swift */,
+				7FC652C81F16243E00E51170 /* ScannerViewController.xib */,
+			);
+			name = ScannerViewController;
 			sourceTree = "<group>";
 		};
 		7FF259551F0CE823008FAF89 /* SearchViewController */ = {
@@ -724,8 +738,9 @@
 				TargetAttributes = {
 					7F6A4B8C1F0CBCDB002C398B = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = B93PQE7TM3;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					7F6A4BA01F0CBCDC002C398B = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -830,6 +845,7 @@
 				7FF259C31F0CFF85008FAF89 /* house_wall.jpg in Resources */,
 				7FF259A91F0CFF85008FAF89 /* bells.png in Resources */,
 				7F6A4B981F0CBCDC002C398B /* Assets.xcassets in Resources */,
+				7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */,
 				7FF259B91F0CFF85008FAF89 /* groupTwo.png in Resources */,
 				7FF259A51F0CFF85008FAF89 /* bangalo.jpg in Resources */,
 				7FF259D11F0CFF85008FAF89 /* on.png in Resources */,
@@ -949,6 +965,7 @@
 				7FF25A111F0E6225008FAF89 /* DashboardTableViewCell.swift in Sources */,
 				7FF25A3E1F139F5C008FAF89 /* NotificationSettingViewController.swift in Sources */,
 				7FF259F81F0E1946008FAF89 /* SearchTableViewCell.swift in Sources */,
+				7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,10 +1111,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezList;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1110,10 +1132,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezList;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1126,7 +1153,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RezListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezListTests;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezList.app/RezList";
@@ -1140,7 +1167,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RezListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezListTests;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RezList.app/RezList";
@@ -1153,7 +1180,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RezListUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezListUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = RezList;
@@ -1166,7 +1193,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = RezListUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmad.RezListUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = RezList;
