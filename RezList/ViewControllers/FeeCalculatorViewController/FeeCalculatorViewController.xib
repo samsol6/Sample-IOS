@@ -306,6 +306,9 @@
                             <state key="normal" title="GET HOME VALUE">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="scanBarCode:" destination="-1" eventType="touchUpInside" id="H63-fP-jer"/>
+                            </connections>
                         </button>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKS-JF-Ue6">
                             <rect key="frame" x="26" y="469" width="324" height="43"/>

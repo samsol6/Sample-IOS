@@ -152,6 +152,13 @@ class FeeCalculatorViewController: UIViewController, UITextFieldDelegate {
     //end
 
     
+    @IBAction func scanBarCode(_ sender: UIButton) {
+        let vc = ScannerViewController(
+            nibName: "ScannerViewController",
+            bundle: nil)
+        self.present(vc, animated: true, completion: nil)
+
+    }
     
     /*
     // MARK: - Navigation
