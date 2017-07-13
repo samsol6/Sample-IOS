@@ -24,18 +24,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faU-dT-maw">
-                            <rect key="frame" x="317" y="16" width="50" height="50"/>
+                            <rect key="frame" x="335" y="29" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="G34-mN-N53"/>
-                                <constraint firstAttribute="width" constant="50" id="P2F-TX-7jK"/>
+                                <constraint firstAttribute="height" constant="30" id="G34-mN-N53"/>
+                                <constraint firstAttribute="width" constant="30" id="P2F-TX-7jK"/>
                             </constraints>
                             <state key="normal" image="white_setting.png"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-Vh-nWy">
-                            <rect key="frame" x="5" y="16" width="50" height="50"/>
+                            <rect key="frame" x="10" y="25" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="1Oz-Vf-wKv"/>
-                                <constraint firstAttribute="width" constant="50" id="XRe-dh-Sr3"/>
+                                <constraint firstAttribute="height" constant="30" id="1Oz-Vf-wKv"/>
+                                <constraint firstAttribute="width" constant="30" id="XRe-dh-Sr3"/>
                             </constraints>
                             <state key="normal" image="refresh_icon.png"/>
                         </button>
@@ -52,15 +52,15 @@
                     <color key="backgroundColor" red="1" green="0.19031835550000001" blue="0.21983794349999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="1Hz-Ms-Qcv"/>
-                        <constraint firstItem="0EL-Vh-nWy" firstAttribute="leading" secondItem="ScM-dX-6xz" secondAttribute="leading" constant="5" id="8Gm-EH-OAE"/>
-                        <constraint firstItem="faU-dT-maw" firstAttribute="leading" secondItem="eHR-MH-w25" secondAttribute="trailing" constant="11" id="G35-Sc-Xxa"/>
-                        <constraint firstItem="eHR-MH-w25" firstAttribute="leading" secondItem="0EL-Vh-nWy" secondAttribute="trailing" constant="14" id="Wqb-QA-n8b"/>
+                        <constraint firstItem="0EL-Vh-nWy" firstAttribute="leading" secondItem="ScM-dX-6xz" secondAttribute="leading" constant="10" id="8Gm-EH-OAE"/>
+                        <constraint firstItem="faU-dT-maw" firstAttribute="leading" secondItem="eHR-MH-w25" secondAttribute="trailing" constant="29" id="G35-Sc-Xxa"/>
+                        <constraint firstItem="eHR-MH-w25" firstAttribute="leading" secondItem="0EL-Vh-nWy" secondAttribute="trailing" constant="29" id="Wqb-QA-n8b"/>
                         <constraint firstItem="eHR-MH-w25" firstAttribute="centerX" secondItem="ScM-dX-6xz" secondAttribute="centerX" id="aah-Cj-1jc"/>
-                        <constraint firstItem="0EL-Vh-nWy" firstAttribute="top" secondItem="ScM-dX-6xz" secondAttribute="top" constant="16" id="afE-fY-aSc"/>
+                        <constraint firstItem="0EL-Vh-nWy" firstAttribute="top" secondItem="ScM-dX-6xz" secondAttribute="top" constant="25" id="afE-fY-aSc"/>
                         <constraint firstAttribute="width" constant="375" id="awf-XB-say"/>
                         <constraint firstItem="eHR-MH-w25" firstAttribute="top" secondItem="ScM-dX-6xz" secondAttribute="top" constant="16" id="im3-WJ-fwg"/>
-                        <constraint firstAttribute="trailing" secondItem="faU-dT-maw" secondAttribute="trailing" constant="8" id="m3w-U2-ID6"/>
-                        <constraint firstItem="faU-dT-maw" firstAttribute="top" secondItem="ScM-dX-6xz" secondAttribute="top" constant="16" id="xHG-JN-YPU"/>
+                        <constraint firstAttribute="trailing" secondItem="faU-dT-maw" secondAttribute="trailing" constant="10" id="m3w-U2-ID6"/>
+                        <constraint firstItem="faU-dT-maw" firstAttribute="top" secondItem="ScM-dX-6xz" secondAttribute="top" constant="29" id="xHG-JN-YPU"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fzb-Oa-TXr">

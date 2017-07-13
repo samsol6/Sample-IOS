@@ -31,6 +31,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     var addressArray = NSMutableArray()
     
     var searchActive = Bool()
+    var qrCodeActive = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,15 +93,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         //end
         // Do any additional setup after loading the view.
         
+        self.searchField.layer.borderColor = UIColor(red:1.00, green:0.77, blue:0.77, alpha:1.0).cgColor
+        self.searchField.layer.borderWidth = 0.8
         getData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tbl.isHidden = false
+        
+        if(qrCodeActive){
+            self.tbl.isHidden = true
+            self.qrCodeLbl.isHidden = false
+            self.qrCodeActive = false
+        }
+        else{
+            self.tbl.isHidden = false
+            self.qrCodeLbl.isHidden = true
+        }
         self.mapView.isHidden = true
         self.searchActive = false
-        self.qrCodeLbl.isHidden = true
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,7 +123,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     //Mark: Notification Center
     
     func showInfo(notification:Notification) -> Void {
+        self.qrCodeActive = true
         self.qrCodeLbl.isHidden = false
+        self.tbl.isHidden = true
         let userobject :AnyObject = notification.userInfo as AnyObject
         guard let searchString = notification.userInfo?["info"] as? String else { return }
         self.qrCodeLbl.text = searchString

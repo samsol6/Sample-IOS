@@ -23,18 +23,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blT-Dt-Pgq">
-                            <rect key="frame" x="317" y="16" width="50" height="50"/>
+                            <rect key="frame" x="335" y="25" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Z3i-8D-k9Y"/>
-                                <constraint firstAttribute="width" constant="50" id="cgH-DV-HCb"/>
+                                <constraint firstAttribute="height" constant="30" id="Z3i-8D-k9Y"/>
+                                <constraint firstAttribute="width" constant="30" id="cgH-DV-HCb"/>
                             </constraints>
                             <state key="normal" image="search_white.png"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0K-Cx-qby">
-                            <rect key="frame" x="5" y="16" width="50" height="50"/>
+                            <rect key="frame" x="10" y="25" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Lcd-0S-bYM"/>
-                                <constraint firstAttribute="width" constant="50" id="fBo-fo-tgJ"/>
+                                <constraint firstAttribute="height" constant="30" id="Lcd-0S-bYM"/>
+                                <constraint firstAttribute="width" constant="30" id="fBo-fo-tgJ"/>
                             </constraints>
                             <state key="normal" image="refresh_icon.png"/>
                         </button>
@@ -51,17 +51,17 @@
                     <color key="backgroundColor" red="1" green="0.19031835550000001" blue="0.21983794349999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="8vf-YA-aNH"/>
-                        <constraint firstItem="blT-Dt-Pgq" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="top" constant="16" id="GcS-rR-P4d"/>
-                        <constraint firstItem="W0K-Cx-qby" firstAttribute="leading" secondItem="itf-5q-v74" secondAttribute="leading" constant="5" id="N7h-ld-foJ"/>
-                        <constraint firstItem="W0K-Cx-qby" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="top" constant="16" id="QWf-YE-LlX"/>
-                        <constraint firstItem="adL-nj-n1o" firstAttribute="leading" secondItem="W0K-Cx-qby" secondAttribute="trailing" constant="14" id="XXm-Jj-ads"/>
+                        <constraint firstItem="blT-Dt-Pgq" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="top" constant="25" id="GcS-rR-P4d"/>
+                        <constraint firstItem="W0K-Cx-qby" firstAttribute="leading" secondItem="itf-5q-v74" secondAttribute="leading" constant="10" id="N7h-ld-foJ"/>
+                        <constraint firstItem="W0K-Cx-qby" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="top" constant="25" id="QWf-YE-LlX"/>
+                        <constraint firstItem="adL-nj-n1o" firstAttribute="leading" secondItem="W0K-Cx-qby" secondAttribute="trailing" constant="29" id="XXm-Jj-ads"/>
                         <constraint firstItem="adL-nj-n1o" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="top" constant="16" id="bWY-91-3c3"/>
-                        <constraint firstAttribute="trailing" secondItem="blT-Dt-Pgq" secondAttribute="trailing" constant="8" id="rYd-V3-NNJ"/>
-                        <constraint firstItem="blT-Dt-Pgq" firstAttribute="leading" secondItem="adL-nj-n1o" secondAttribute="trailing" constant="11" id="v6s-6k-Kte"/>
+                        <constraint firstAttribute="trailing" secondItem="blT-Dt-Pgq" secondAttribute="trailing" constant="10" id="rYd-V3-NNJ"/>
+                        <constraint firstItem="blT-Dt-Pgq" firstAttribute="leading" secondItem="adL-nj-n1o" secondAttribute="trailing" constant="29" id="v6s-6k-Kte"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8w-gG-LNK">
-                    <rect key="frame" x="0.0" y="80" width="375" height="152"/>
+                    <rect key="frame" x="0.0" y="130" width="375" height="152"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-bell.png" translatesAutoresizingMaskIntoConstraints="NO" id="hCe-jd-Vr2">
                             <rect key="frame" x="8" y="8" width="40" height="40"/>
@@ -116,7 +116,7 @@
                 <constraint firstItem="D8w-gG-LNK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="04z-M1-O9J"/>
                 <constraint firstAttribute="trailing" secondItem="D8w-gG-LNK" secondAttribute="trailing" id="Fo2-cE-yaA"/>
                 <constraint firstItem="itf-5q-v74" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GbQ-6Q-biS"/>
-                <constraint firstItem="D8w-gG-LNK" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="bottom" id="Jic-Id-3YG"/>
+                <constraint firstItem="D8w-gG-LNK" firstAttribute="top" secondItem="itf-5q-v74" secondAttribute="bottom" constant="50" id="Jic-Id-3YG"/>
                 <constraint firstAttribute="trailing" secondItem="itf-5q-v74" secondAttribute="trailing" id="cKk-6R-OpC"/>
                 <constraint firstItem="itf-5q-v74" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uUi-lF-9jo"/>
             </constraints>

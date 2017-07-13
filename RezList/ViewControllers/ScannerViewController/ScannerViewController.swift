@@ -13,6 +13,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    @IBOutlet weak var lbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,10 +94,12 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         dismiss(animated: true)
     }
-
     
     func found(code: String) {
         print(code)
+         NotificationCenter.default.post(name: Notification.Name("qrCodeInfo"), object: nil, userInfo:(["info": code] as! NSDictionary) as! [AnyHashable : Any])
+//        self.view.isHidden = false
+//        self.lbl.text = code
     }
     
     override var prefersStatusBarHidden: Bool {

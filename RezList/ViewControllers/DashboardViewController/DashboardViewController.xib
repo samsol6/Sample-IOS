@@ -25,18 +25,18 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsN-Rm-qOq">
-                            <rect key="frame" x="317" y="16" width="50" height="50"/>
+                            <rect key="frame" x="335" y="25" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="WH2-w2-FXz"/>
-                                <constraint firstAttribute="width" constant="50" id="kPi-VD-xnl"/>
+                                <constraint firstAttribute="height" constant="30" id="WH2-w2-FXz"/>
+                                <constraint firstAttribute="width" constant="30" id="kPi-VD-xnl"/>
                             </constraints>
                             <state key="normal" image="search_white.png"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9c-uk-ldB">
-                            <rect key="frame" x="5" y="16" width="50" height="50"/>
+                            <rect key="frame" x="10" y="25" width="30" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="0hI-eE-QFC"/>
-                                <constraint firstAttribute="width" constant="50" id="Kbd-I5-XWg"/>
+                                <constraint firstAttribute="height" constant="30" id="0hI-eE-QFC"/>
+                                <constraint firstAttribute="width" constant="30" id="Kbd-I5-XWg"/>
                             </constraints>
                             <state key="normal" image="refresh_icon.png"/>
                         </button>
@@ -53,14 +53,14 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.19031835550000001" blue="0.21983794349999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="D9c-uk-ldB" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="top" constant="16" id="1pb-2Y-MUU"/>
-                        <constraint firstItem="CkQ-LJ-RcA" firstAttribute="leading" secondItem="D9c-uk-ldB" secondAttribute="trailing" constant="14" id="Afu-kX-xYe"/>
-                        <constraint firstItem="tsN-Rm-qOq" firstAttribute="leading" secondItem="CkQ-LJ-RcA" secondAttribute="trailing" constant="11" id="CiT-Pb-JIT"/>
-                        <constraint firstItem="tsN-Rm-qOq" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="top" constant="16" id="Mwz-cM-cRf"/>
+                        <constraint firstItem="D9c-uk-ldB" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="top" constant="25" id="1pb-2Y-MUU"/>
+                        <constraint firstItem="CkQ-LJ-RcA" firstAttribute="leading" secondItem="D9c-uk-ldB" secondAttribute="trailing" constant="29" id="Afu-kX-xYe"/>
+                        <constraint firstItem="tsN-Rm-qOq" firstAttribute="leading" secondItem="CkQ-LJ-RcA" secondAttribute="trailing" constant="29" id="CiT-Pb-JIT"/>
+                        <constraint firstItem="tsN-Rm-qOq" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="top" constant="25" id="Mwz-cM-cRf"/>
                         <constraint firstAttribute="height" constant="80" id="ftp-Ud-xG8"/>
-                        <constraint firstAttribute="trailing" secondItem="tsN-Rm-qOq" secondAttribute="trailing" constant="8" id="rQa-Xo-78e"/>
+                        <constraint firstAttribute="trailing" secondItem="tsN-Rm-qOq" secondAttribute="trailing" constant="10" id="rQa-Xo-78e"/>
                         <constraint firstItem="CkQ-LJ-RcA" firstAttribute="top" secondItem="mIH-fm-iLM" secondAttribute="top" constant="16" id="tui-sd-tXG"/>
-                        <constraint firstItem="D9c-uk-ldB" firstAttribute="leading" secondItem="mIH-fm-iLM" secondAttribute="leading" constant="5" id="yhc-FV-98a"/>
+                        <constraint firstItem="D9c-uk-ldB" firstAttribute="leading" secondItem="mIH-fm-iLM" secondAttribute="leading" constant="10" id="yhc-FV-98a"/>
                         <constraint firstItem="CkQ-LJ-RcA" firstAttribute="centerX" secondItem="mIH-fm-iLM" secondAttribute="centerX" id="zfE-4E-xit"/>
                     </constraints>
                 </view>
