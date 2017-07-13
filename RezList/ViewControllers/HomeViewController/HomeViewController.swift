@@ -76,8 +76,6 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailField.tintColor = UIColor.white
-        self.passwordField.tintColor = UIColor.white
         // Do any additional setup after loading the view.
         
         self.scrollView.contentSize = CGSize(width: 320, height: 568)
@@ -92,6 +90,11 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
         //set Textfield delegate
         self.emailField.delegate = self
         self.passwordField.delegate = self
+        
+        self.emailField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        self.passwordField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        self.emailField.tintColor = UIColor.white
+        self.passwordField.tintColor = UIColor.white
 
     }
 
@@ -122,8 +125,8 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         activeField = nil
     }
-    
     //end
+    
 
     @IBAction func signinBtnClicked(_ sender: UIButton) {
         //let vc = SearchViewController(

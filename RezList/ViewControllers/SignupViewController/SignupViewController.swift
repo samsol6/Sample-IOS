@@ -85,6 +85,11 @@ class SignupViewController: ValidationViewController, UITextFieldDelegate {
         self.email.delegate = self
         self.password.delegate = self
         self.confirmPassword.delegate = self
+        
+        self.email.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        self.password.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+        self.confirmPassword.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0);
+
 
     }
 

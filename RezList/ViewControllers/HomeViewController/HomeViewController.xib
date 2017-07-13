@@ -61,15 +61,16 @@
                                 <action selector="signinBtnClicked:" destination="-1" eventType="touchUpInside" id="74x-fK-E7K"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PeQ-ng-ovX">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PeQ-ng-ovX">
                             <rect key="frame" x="7" y="260" width="361" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="afb-1A-EV7"/>
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                     <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -79,9 +80,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l67-0M-SH4">
                             <rect key="frame" x="7" y="637" width="361" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="ZeD-3l-cPN"/>
+                                <constraint firstAttribute="height" constant="30" id="fKr-QJ-8Yw"/>
                             </constraints>
-                            <state key="normal" title="Don't have an account?">
+                            <state key="normal" title="New here? Create an account&gt;">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -91,19 +92,20 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="l67-0M-SH4" secondAttribute="trailing" constant="7" id="1wk-1o-Q4K"/>
                         <constraint firstItem="Ebe-21-G96" firstAttribute="leading" secondItem="sS5-yC-USh" secondAttribute="leading" constant="7" id="6FF-K9-kb7"/>
                         <constraint firstAttribute="trailing" secondItem="lhq-un-dHy" secondAttribute="trailing" constant="7" id="6Fd-xa-pWg"/>
                         <constraint firstItem="PeQ-ng-ovX" firstAttribute="top" secondItem="kup-UB-pV8" secondAttribute="bottom" constant="82" id="708-l8-fdy"/>
-                        <constraint firstItem="l67-0M-SH4" firstAttribute="centerX" secondItem="kup-UB-pV8" secondAttribute="centerX" id="8sJ-7I-RV1"/>
+                        <constraint firstItem="l67-0M-SH4" firstAttribute="top" secondItem="sS5-yC-USh" secondAttribute="top" constant="637" id="A0m-ax-rTB"/>
+                        <constraint firstItem="l67-0M-SH4" firstAttribute="centerX" secondItem="kup-UB-pV8" secondAttribute="centerX" id="AAL-l6-uVo"/>
                         <constraint firstItem="kup-UB-pV8" firstAttribute="top" secondItem="sS5-yC-USh" secondAttribute="top" constant="48" id="Cg4-H8-BY5"/>
                         <constraint firstAttribute="trailing" secondItem="Ebe-21-G96" secondAttribute="trailing" constant="7" id="Iex-Ar-zYW"/>
                         <constraint firstItem="Ebe-21-G96" firstAttribute="top" secondItem="PeQ-ng-ovX" secondAttribute="bottom" constant="20" id="LZd-j4-wlV"/>
-                        <constraint firstItem="l67-0M-SH4" firstAttribute="top" secondItem="sS5-yC-USh" secondAttribute="top" constant="637" id="SV6-Ld-mfd"/>
+                        <constraint firstAttribute="bottom" secondItem="l67-0M-SH4" secondAttribute="bottom" id="SEq-wU-GRR"/>
+                        <constraint firstAttribute="bottom" secondItem="l67-0M-SH4" secondAttribute="bottom" id="TFt-hf-1lO"/>
+                        <constraint firstItem="l67-0M-SH4" firstAttribute="leading" secondItem="sS5-yC-USh" secondAttribute="leading" constant="7" id="YSU-Ok-ODH"/>
                         <constraint firstItem="lhq-un-dHy" firstAttribute="leading" secondItem="sS5-yC-USh" secondAttribute="leading" constant="7" id="bnn-ck-QTZ"/>
                         <constraint firstAttribute="trailing" secondItem="PeQ-ng-ovX" secondAttribute="trailing" constant="7" id="de5-mm-u1Z"/>
-                        <constraint firstItem="l67-0M-SH4" firstAttribute="leading" secondItem="sS5-yC-USh" secondAttribute="leading" constant="7" id="kpP-8m-Pt1"/>
-                        <constraint firstAttribute="bottom" secondItem="l67-0M-SH4" secondAttribute="bottom" id="mfN-mq-xQN"/>
+                        <constraint firstAttribute="trailing" secondItem="l67-0M-SH4" secondAttribute="trailing" constant="7" id="lFH-OR-fsk"/>
                         <constraint firstItem="kup-UB-pV8" firstAttribute="centerX" secondItem="sS5-yC-USh" secondAttribute="centerX" id="oSV-E7-iig"/>
                         <constraint firstItem="lhq-un-dHy" firstAttribute="top" secondItem="Ebe-21-G96" secondAttribute="bottom" constant="30" id="q8x-FV-gPf"/>
                         <constraint firstItem="PeQ-ng-ovX" firstAttribute="leading" secondItem="sS5-yC-USh" secondAttribute="leading" constant="7" id="z3l-A5-ehX"/>

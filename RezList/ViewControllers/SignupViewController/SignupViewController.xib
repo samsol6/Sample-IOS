@@ -41,7 +41,7 @@
                             </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                     <color key="value" red="1" green="1" blue="1" alpha="0.50387931034482758" colorSpace="calibratedRGB"/>
@@ -85,7 +85,7 @@
                                 <constraint firstAttribute="height" constant="50" id="3NY-2a-Dw4"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title="Sign up">
+                            <state key="normal" title="Create User">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
