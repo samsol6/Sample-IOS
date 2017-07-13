@@ -13,23 +13,35 @@ import MBProgressHUD
 import MapKit
 import CoreLocation
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var topView: UIView!
     
+    @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var map: MKMapView!
     
+    @IBOutlet weak var qrCodeLbl: UILabel!
     
     var jsonArray = NSArray()
+    var searchArray = NSMutableArray()
     var myLocations = NSMutableArray()
+    
+    var addressArray = NSMutableArray()
+    
+    var searchActive = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set delegate and data source of tableview to this controller
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showInfo(notification:)) , name: NSNotification.Name(rawValue: "qrCodeInfo"), object: nil)
+        
+        self.qrCodeLbl.isHidden = true
+         self.searchField.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
+        self.searchField.delegate = self
         //correct code...*******************
 //        let annotation = MKPointAnnotation()
 //        
@@ -87,6 +99,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewWillAppear(animated)
         self.tbl.isHidden = false
         self.mapView.isHidden = true
+        self.searchActive = false
+        self.qrCodeLbl.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,10 +108,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    //Mark: Notification Center
+    
+    func showInfo(notification:Notification) -> Void {
+        self.qrCodeLbl.isHidden = false
+        let userobject :AnyObject = notification.userInfo as AnyObject
+        guard let searchString = notification.userInfo?["info"] as? String else { return }
+        self.qrCodeLbl.text = searchString
+    }
+    //end
     //Mark : UITable View Delegate Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jsonArray.count
+        if(searchActive){
+            return self.searchArray.count
+        }
+        else{
+            return jsonArray.count
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
@@ -105,59 +133,115 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         
-//        cell.img.image = UIImage(named: "himage.jpg")
-        let propertyObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
-        let addressObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
-        let photoObj : NSArray = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
-        let geoLocationObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
-        
-        //parsing data from property object
-        let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
-        var numBath = Int()
-        if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathrooms")as AnyObject)as? Int){
-            numBath = bathRooms
-        }
-        let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
-
-        //getting address
-        let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
-        
-        cell.location.text = address
-        cell.beds.text = String(bedRooms)+" Beds"
-        cell.baths.text = String(numBath)+" baths"
-        cell.area.text = String(area)+" SqFt"
-        
-        let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
-        
-        // getting photo url from the photo object
-        if let photoUrl : String = ((photoObj.object(at: 1) as AnyObject) as? String){
-            if let imgData = UserDefaults.standard.object(forKey: uniqueKey) as? Data
-            {
-                if let image = UIImage(data: imgData as Data)
-                {
-                    //set image in UIImageView imgSignature
-                    cell.img.image = image
-                    //remove cache after fetching image data
-                }
+        if(searchActive){
+            let propertyObj : NSDictionary = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
+            let addressObj : NSDictionary = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
+            let photoObj : NSArray = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
+            let geoLocationObj : NSDictionary = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
+            
+            //parsing data from property object
+            let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
+            var numBath = Int()
+            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathrooms")as AnyObject)as? Int){
+                numBath = bathRooms
             }
-            else{
-                Alamofire.request(photoUrl).responseImage { response in
-                    debugPrint(response)
-                    print(response.request)
-                    print(response.response)
-                    debugPrint(response.result)
-                    if let image = response.result.value {
-                        print("image downloaded: \(image)")
+            let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
+            
+            //getting address
+            let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
+            
+            cell.location.text = address
+            cell.beds.text = String(bedRooms)+" Beds"
+            cell.baths.text = String(numBath)+" baths"
+            cell.area.text = String(area)+" SqFt"
+            
+            let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
+            
+            // getting photo url from the photo object
+            if let photoUrl : String = ((photoObj.object(at: 1) as AnyObject) as? String){
+                if let imgData = UserDefaults.standard.object(forKey: uniqueKey) as? Data
+                {
+                    if let image = UIImage(data: imgData as Data)
+                    {
+                        //set image in UIImageView imgSignature
                         cell.img.image = image
-                        
-                        //                    let strLeagueId = String(self.gameId)
-                        let imageData = UIImageJPEGRepresentation(image, 1.0)
-                        UserDefaults.standard.set(imageData, forKey: uniqueKey)
-                        UserDefaults.standard.synchronize()
+                        //remove cache after fetching image data
                     }
                 }
+                else{
+                    Alamofire.request(photoUrl).responseImage { response in
+                        debugPrint(response)
+                        print(response.request)
+                        print(response.response)
+                        debugPrint(response.result)
+                        if let image = response.result.value {
+                            print("image downloaded: \(image)")
+                            cell.img.image = image
+                            
+                            //                    let strLeagueId = String(self.gameId)
+                            let imageData = UIImageJPEGRepresentation(image, 1.0)
+                            UserDefaults.standard.set(imageData, forKey: uniqueKey)
+                            UserDefaults.standard.synchronize()
+                        }
+                    }
+                }
+                
             }
+        }
+        else{
+            let propertyObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
+            let addressObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
+            let photoObj : NSArray = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
+            let geoLocationObj : NSDictionary = (((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
+            
+            //parsing data from property object
+            let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
+            var numBath = Int()
+            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathrooms")as AnyObject)as? Int){
+                numBath = bathRooms
+            }
+            let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
 
+            //getting address
+            let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
+            
+            cell.location.text = address
+            cell.beds.text = String(bedRooms)+" Beds"
+            cell.baths.text = String(numBath)+" baths"
+            cell.area.text = String(area)+" SqFt"
+            
+            let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
+            
+            // getting photo url from the photo object
+            if let photoUrl : String = ((photoObj.object(at: 1) as AnyObject) as? String){
+                if let imgData = UserDefaults.standard.object(forKey: uniqueKey) as? Data
+                {
+                    if let image = UIImage(data: imgData as Data)
+                    {
+                        //set image in UIImageView imgSignature
+                        cell.img.image = image
+                        //remove cache after fetching image data
+                    }
+                }
+                else{
+                    Alamofire.request(photoUrl).responseImage { response in
+                        debugPrint(response)
+                        print(response.request)
+                        print(response.response)
+                        debugPrint(response.result)
+                        if let image = response.result.value {
+                            print("image downloaded: \(image)")
+                            cell.img.image = image
+                            
+                            //                    let strLeagueId = String(self.gameId)
+                            let imageData = UIImageJPEGRepresentation(image, 1.0)
+                            UserDefaults.standard.set(imageData, forKey: uniqueKey)
+                            UserDefaults.standard.synchronize()
+                        }
+                    }
+                }
+
+            }
         }
         return cell
     }
@@ -211,6 +295,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func getGeoLocation(){
         //making array of geoLocation Coordinates
+        self.addressArray.removeAllObjects()
         var count = 0
         while (count < jsonArray.count){
             let addressObj : NSDictionary = (((jsonArray.object(at: count) as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
@@ -225,6 +310,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             ]
             
             let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
+            
+            self.addressArray.add(address)
             var obj = NSMutableDictionary()
             var latitude = Double()
             var longitude = Double()
@@ -250,6 +337,68 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //end...
     
+    //Mark: UITextfield delegate functions
+    
+    
+    func tapFunction(sender:UITapGestureRecognizer){
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.searchField.becomeFirstResponder()
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        let searchValue = searchField.text
+        searchArray.removeAllObjects()
+        for i in 0..<self.jsonArray.count
+        {
+            let array: NSDictionary = (self.jsonArray.object(at: i) as AnyObject) as! NSDictionary
+            
+            let arr = (self.addressArray.object(at: i) as AnyObject)as? String
+            
+            let ar = String(describing: arr?.lowercased())
+            if (ar.contains(searchValue!))
+            {
+                self.searchArray.add(array)
+            }
+            else
+            {
+                
+            }
+            if (searchValue?.isEmpty)! {
+                self.searchActive=false
+                self.tbl.reloadData()
+            }
+            else {
+                self.searchActive = true
+            }
+        }
+        self.tbl.reloadData()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        self.searchField.resignFirstResponder()
+    }
+    
+    //end
+ 
+ 
+    //end
+ 
+ 
+    @IBAction func goToScanner(_ sender: UIButton) {
+        let vc = ScannerViewController(
+            nibName: "ScannerViewController",
+            bundle: nil)
+        self.present(vc, animated: true, completion: nil)
+    }
+ 
     /*
     // MARK: - Navigation
 
