@@ -14,6 +14,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var location: UILabel!
     
+    @IBOutlet weak var price: UILabel!
     
     @IBOutlet weak var beds: UILabel!
     @IBOutlet weak var baths: UILabel!

@@ -24,6 +24,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     @IBOutlet weak var qrCodeLbl: UILabel!
     
+    @IBOutlet weak var mapBtn: UIButton!
+    @IBOutlet weak var menuBtn: UIButton!
+    
+    @IBOutlet weak var filterSearchLbl: UILabel!
+    @IBOutlet weak var crossBtn: UIButton!
+    
     var jsonArray = NSArray()
     var searchArray = NSMutableArray()
     var myLocations = NSMutableArray()
@@ -33,10 +39,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     var searchActive = Bool()
     var qrCodeActive = Bool()
     
+    
+    //new searching on the basis of the min price and max price
+    var minPrice = Int()
+    var maxPrice = Int()
+    var bedFilter = Int()
+    var areaFilter = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set delegate and data source of tableview to this controller
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.showInfo(notification:)) , name: NSNotification.Name(rawValue: "qrCodeInfo"), object: nil)
         
@@ -78,6 +91,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
+        appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
+        appDelegate.window?.rootViewController = appDelegate.tabBarController
 
 //        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
@@ -100,6 +117,31 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.tabBarController?.tabBar.isHidden = false
+        
+        self.crossBtn.isHidden = true
+        self.filterSearchLbl.isHidden = true
+        
+        if(self.minPrice != 0 || self.maxPrice != 0){
+            
+//            self.mapBtn.isUserInteractionEnabled = true
+//            self.searchField.isUserInteractionEnabled = true
+//            self.menuBtn.isUserInteractionEnabled = true
+            
+            self.mapBtn.isHidden = true
+            self.searchField.isHidden = true
+            self.menuBtn.isHidden = true
+
+            self.filterSearchLbl.isHidden = false
+            self.crossBtn.isHidden = false
+            self.filterSearchLbl.transform = CGAffineTransform( translationX: 0.0, y: 62.0 )
+            
+//            self.mapBtn.transform = CGAffineTransform( translationX: 0.0, y: 62.0 )
+//            self.searchField.transform = CGAffineTransform( translationX: 0.0, y: 62.0 )
+//            self.menuBtn.transform = CGAffineTransform( translationX: 0.0, y: 62.0 )
+        }
         
         if(qrCodeActive){
             self.tbl.isHidden = true
@@ -154,9 +196,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             let geoLocationObj : NSDictionary = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
             
             //parsing data from property object
+            let Price : Int = ((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "listPrice")as! Int)
+            cell.price.text = "$"+String(Price)
+            
             let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
             var numBath = Int()
-            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathrooms")as AnyObject)as? Int){
+            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathsFull")as AnyObject)as? Int){
                 numBath = bathRooms
             }
             let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
@@ -165,9 +210,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
             
             cell.location.text = address
-            cell.beds.text = String(bedRooms)+" Beds"
-            cell.baths.text = String(numBath)+" baths"
-            cell.area.text = String(area)+" SqFt"
+            cell.beds.text = String(bedRooms)
+            cell.baths.text = String(numBath)
+            cell.area.text = String(area)
             
             let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
             
@@ -211,18 +256,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             //parsing data from property object
             let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
             var numBath = Int()
-            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathrooms")as AnyObject)as? Int){
+            if let bathRooms : Int = (((propertyObj as AnyObject).value(forKey: "bathsFull")as AnyObject)as? Int){
                 numBath = bathRooms
             }
+            
+             let Price : Int = ((jsonArray.object(at: indexPath.row) as AnyObject).value(forKey: "listPrice")as! Int)
+            cell.price.text = "$"+String(Price)
+            
             let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
 
             //getting address
             let address : String = (((addressObj as AnyObject).value(forKey: "full")as AnyObject)as? String)!
             
             cell.location.text = address
-            cell.beds.text = String(bedRooms)+" Beds"
-            cell.baths.text = String(numBath)+" baths"
-            cell.area.text = String(area)+" SqFt"
+            cell.beds.text = String(bedRooms)
+            cell.baths.text = String(numBath)
+            cell.area.text = String(area)
             
             let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
             
@@ -258,6 +307,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(searchActive){
+            let vc = HotelDetailViewController(
+                nibName: "HotelDetailViewController",
+                bundle: nil)
+            let propertyObj : NSDictionary = (self.searchArray.object(at: indexPath.row) as? NSDictionary)!
+            vc.dict = propertyObj
+            self.present(vc, animated: true, completion: nil)
+        }
+        else{
+            let vc = HotelDetailViewController(
+                nibName: "HotelDetailViewController",
+                bundle: nil)
+            let propertyObj : NSDictionary = (self.jsonArray.object(at: indexPath.row) as? NSDictionary)!
+            vc.dict = propertyObj
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     @IBAction func mapBtnClicked(_ sender: UIButton) {
@@ -301,6 +369,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                     
                     self.getGeoLocation()
                     
+                    if(self.minPrice != 0 || self.maxPrice != 0){
+                        self.getDataOnPrice()
+                    }
                     self.tbl.reloadData()
                 }
             }
@@ -401,11 +472,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     //end
- 
- 
-    //end
- 
- 
+    
     @IBAction func goToScanner(_ sender: UIButton) {
         let vc = ScannerViewController(
             nibName: "ScannerViewController",
@@ -413,6 +480,66 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.present(vc, animated: true, completion: nil)
     }
  
+    //MArk : Searching on the basis of min price and max price
+    
+    func getDataOnPrice(){
+        print(self.minPrice)
+        print(self.maxPrice)
+        var count = 0
+        while (count < self.jsonArray.count){
+            let listPrice : Int = ((jsonArray.object(at: count) as AnyObject).value(forKey: "listPrice")as! Int)
+             let propertyObj : NSDictionary = (((self.jsonArray.object(at: count) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
+            let bedRooms : Int = (((propertyObj as AnyObject).value(forKey: "bedrooms")as AnyObject)as? Int)!
+            let area : Int = (((propertyObj as AnyObject).value(forKey: "area")as AnyObject)as? Int)!
+
+            print(bedRooms)
+            print(area)
+            
+            var minArea = Int()
+            var maxArea = Int()
+            var bedFil = Int()
+            if(self.areaFilter != 0){
+                minArea = self.areaFilter-100
+                maxArea = self.areaFilter+100
+            }
+            if(self.bedFilter != 0){
+                bedFil = self.bedFilter
+            }
+            if(self.bedFilter != 0 && self.areaFilter != 0){
+                if((listPrice <= maxPrice && listPrice >= minPrice) && (bedRooms == self.bedFilter) && (area <= maxArea && area >= minArea)){
+                    self.searchArray.add(self.jsonArray.object(at: count) as AnyObject)
+                }
+            }
+            else if(self.bedFilter == 0 && self.areaFilter != 0){
+                if((listPrice <= maxPrice && listPrice >= minPrice) && (area <= maxArea && area >= minArea)){
+                    self.searchArray.add(self.jsonArray.object(at: count) as AnyObject)
+                }
+            }
+            else if(self.bedFilter != 0 && self.areaFilter == 0){
+                if((listPrice <= maxPrice && listPrice >= minPrice) && (bedRooms == bedFil)){
+                    self.searchArray.add(self.jsonArray.object(at: count) as AnyObject)
+                }
+            }
+            else{
+                if(listPrice <= maxPrice && listPrice >= minPrice){
+                    self.searchArray.add(self.jsonArray.object(at: count) as AnyObject)
+                }
+            }
+            count += 1
+        }
+        
+        print(self.searchArray)
+        self.searchActive = true
+        self.minPrice   = 0
+        self.maxPrice   = 0
+        self.bedFilter  = 0
+        self.areaFilter = 0
+        self.tbl.reloadData()
+    }
+    @IBAction func crossBtnPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
