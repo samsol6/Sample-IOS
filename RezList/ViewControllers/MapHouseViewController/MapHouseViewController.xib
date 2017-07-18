@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapHouseViewController" customModule="RezList" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="vqP-hN-bsq" id="F12-RP-p05"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vqP-hN-bsq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR3-ZA-gar">
+                    <rect key="frame" x="20" y="20" width="25" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="1db-u0-k2A"/>
+                        <constraint firstAttribute="height" constant="22" id="bX8-st-CKH"/>
+                    </constraints>
+                    <state key="normal" image="back.png"/>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="6yU-Th-2ag"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vqP-hN-bsq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6Lz-eQ-7wz"/>
+                <constraint firstItem="aR3-ZA-gar" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="98o-M5-S9F"/>
+                <constraint firstAttribute="trailing" secondItem="vqP-hN-bsq" secondAttribute="trailing" id="JFC-g3-hy3"/>
+                <constraint firstAttribute="bottom" secondItem="vqP-hN-bsq" secondAttribute="bottom" id="OqD-FC-CKU"/>
+                <constraint firstItem="vqP-hN-bsq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TDR-6x-ntg"/>
+                <constraint firstItem="aR3-ZA-gar" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="U46-Nm-IUQ"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="back.png" width="180" height="180"/>
+    </resources>
+</document>
