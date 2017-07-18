@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F02148D1F1CB14700204D60 /* green_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F02148C1F1CB14700204D60 /* green_home.png */; };
+		7F0214911F1CBF7B00204D60 /* HotelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02148F1F1CBF7B00204D60 /* HotelDetailViewController.swift */; };
+		7F0214921F1CBF7B00204D60 /* HotelDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */; };
+		7F0214941F1CC12F00204D60 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214931F1CC12F00204D60 /* image.png */; };
+		7F0214961F1CDFCD00204D60 /* mapImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214951F1CDFCD00204D60 /* mapImg.png */; };
 		7F6A4B911F0CBCDC002C398B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4B901F0CBCDC002C398B /* AppDelegate.swift */; };
 		7F6A4B931F0CBCDC002C398B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4B921F0CBCDC002C398B /* ViewController.swift */; };
 		7F6A4B981F0CBCDC002C398B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6A4B971F0CBCDC002C398B /* Assets.xcassets */; };
@@ -15,6 +20,9 @@
 		7F6A4BB11F0CBCDC002C398B /* RezListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4BB01F0CBCDC002C398B /* RezListUITests.swift */; };
 		7F6A4BC51F0CCE32002C398B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4BC31F0CCE32002C398B /* HomeViewController.swift */; };
 		7F6A4BC61F0CCE32002C398B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6A4BC41F0CCE32002C398B /* HomeViewController.xib */; };
+		7F6ECA8D1F1E18FA009C2F2F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA8C1F1E18FA009C2F2F /* back.png */; };
+		7F6ECA911F1E3487009C2F2F /* MapHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ECA8F1F1E3487009C2F2F /* MapHouseViewController.swift */; };
+		7F6ECA921F1E3487009C2F2F /* MapHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */; };
 		7FB675111F1539C300CE927D /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB675101F1539C300CE927D /* ValidationViewController.swift */; };
 		7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC652C71F16243E00E51170 /* ScannerViewController.swift */; };
 		7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC652C81F16243E00E51170 /* ScannerViewController.xib */; };
@@ -30,6 +38,8 @@
 		7FEB89681F17730400DBB152 /* white_bell-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB89621F17730400DBB152 /* white_bell-32.png */; };
 		7FEB89691F17730400DBB152 /* white_cal-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB89631F17730400DBB152 /* white_cal-32.png */; };
 		7FEB896A1F17730400DBB152 /* white_setting-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB89641F17730400DBB152 /* white_setting-32.png */; };
+		7FEB896E1F18EAC000DBB152 /* EmailUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB896C1F18EAC000DBB152 /* EmailUserListViewController.swift */; };
+		7FEB896F1F18EAC000DBB152 /* EmailUserListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FEB896D1F18EAC000DBB152 /* EmailUserListViewController.xib */; };
 		7FF259531F0CE81A008FAF89 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF259511F0CE81A008FAF89 /* SearchViewController.swift */; };
 		7FF259541F0CE81A008FAF89 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF259521F0CE81A008FAF89 /* SearchViewController.xib */; };
 		7FF259A11F0CFF85008FAF89 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7FF259571F0CFF85008FAF89 /* 02.jpg */; };
@@ -161,6 +171,11 @@
 /* Begin PBXFileReference section */
 		04AF75DA06E12F947CF5866B /* Pods_RezList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RezList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		650D61836EA63156068CB24C /* Pods-RezList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RezList.release.xcconfig"; path = "Pods/Target Support Files/Pods-RezList/Pods-RezList.release.xcconfig"; sourceTree = "<group>"; };
+		7F02148C1F1CB14700204D60 /* green_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green_home.png; path = images/green_home.png; sourceTree = "<group>"; };
+		7F02148F1F1CBF7B00204D60 /* HotelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotelDetailViewController.swift; path = ViewControllers/HotelDetailViewController/HotelDetailViewController.swift; sourceTree = "<group>"; };
+		7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelDetailViewController.xib; path = ViewControllers/HotelDetailViewController/HotelDetailViewController.xib; sourceTree = "<group>"; };
+		7F0214931F1CC12F00204D60 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image.png; path = images/image.png; sourceTree = "<group>"; };
+		7F0214951F1CDFCD00204D60 /* mapImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapImg.png; path = images/mapImg.png; sourceTree = "<group>"; };
 		7F6A4B8D1F0CBCDC002C398B /* RezList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RezList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6A4B901F0CBCDC002C398B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6A4B921F0CBCDC002C398B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +190,9 @@
 		7F6A4BB21F0CBCDC002C398B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F6A4BC31F0CCE32002C398B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController/HomeViewController.swift; sourceTree = "<group>"; };
 		7F6A4BC41F0CCE32002C398B /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = ViewControllers/HomeViewController/HomeViewController.xib; sourceTree = "<group>"; };
+		7F6ECA8C1F1E18FA009C2F2F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = images/back.png; sourceTree = "<group>"; };
+		7F6ECA8F1F1E3487009C2F2F /* MapHouseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapHouseViewController.swift; path = ViewControllers/MapHouseViewController/MapHouseViewController.swift; sourceTree = "<group>"; };
+		7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapHouseViewController.xib; path = ViewControllers/MapHouseViewController/MapHouseViewController.xib; sourceTree = "<group>"; };
 		7FB675101F1539C300CE927D /* ValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationViewController.swift; path = ViewControllers/ValidationViewController/ValidationViewController.swift; sourceTree = "<group>"; };
 		7FC652C71F16243E00E51170 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = ViewControllers/ScannerViewController/ScannerViewController.swift; sourceTree = "<group>"; };
 		7FC652C81F16243E00E51170 /* ScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScannerViewController.xib; path = ViewControllers/ScannerViewController/ScannerViewController.xib; sourceTree = "<group>"; };
@@ -190,6 +208,8 @@
 		7FEB89621F17730400DBB152 /* white_bell-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "white_bell-32.png"; path = "images/white_bell-32.png"; sourceTree = "<group>"; };
 		7FEB89631F17730400DBB152 /* white_cal-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "white_cal-32.png"; path = "images/white_cal-32.png"; sourceTree = "<group>"; };
 		7FEB89641F17730400DBB152 /* white_setting-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "white_setting-32.png"; path = "images/white_setting-32.png"; sourceTree = "<group>"; };
+		7FEB896C1F18EAC000DBB152 /* EmailUserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailUserListViewController.swift; path = ViewControllers/EmailUserListViewController/EmailUserListViewController.swift; sourceTree = "<group>"; };
+		7FEB896D1F18EAC000DBB152 /* EmailUserListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EmailUserListViewController.xib; path = ViewControllers/EmailUserListViewController/EmailUserListViewController.xib; sourceTree = "<group>"; };
 		7FF259511F0CE81A008FAF89 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ViewControllers/SearchViewController/SearchViewController.swift; sourceTree = "<group>"; };
 		7FF259521F0CE81A008FAF89 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ViewControllers/SearchViewController/SearchViewController.xib; sourceTree = "<group>"; };
 		7FF259571F0CFF85008FAF89 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 02.jpg; path = images/02.jpg; sourceTree = "<group>"; };
@@ -340,6 +360,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7F02148E1F1CBF4E00204D60 /* HotelDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F02148F1F1CBF7B00204D60 /* HotelDetailViewController.swift */,
+				7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */,
+			);
+			name = HotelDetailViewController;
+			sourceTree = "<group>";
+		};
 		7F6A4B841F0CBCDB002C398B = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +427,9 @@
 		7F6A4BC21F0CCD41002C398B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F6ECA8E1F1E341B009C2F2F /* MapHouseViewController */,
+				7F02148E1F1CBF4E00204D60 /* HotelDetailViewController */,
+				7FEB896B1F18EA9900DBB152 /* EmailUserListViewController */,
 				7FC652C61F16241300E51170 /* ScannerViewController */,
 				7FB6750F1F1539A600CE927D /* ValidationViewController */,
 				7FF25A3B1F139F26008FAF89 /* NotificationSettingViewController */,
@@ -425,6 +457,15 @@
 			name = HomeViewController;
 			sourceTree = "<group>";
 		};
+		7F6ECA8E1F1E341B009C2F2F /* MapHouseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F6ECA8F1F1E3487009C2F2F /* MapHouseViewController.swift */,
+				7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */,
+			);
+			name = MapHouseViewController;
+			sourceTree = "<group>";
+		};
 		7FB6750F1F1539A600CE927D /* ValidationViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +483,15 @@
 			name = ScannerViewController;
 			sourceTree = "<group>";
 		};
+		7FEB896B1F18EA9900DBB152 /* EmailUserListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7FEB896C1F18EAC000DBB152 /* EmailUserListViewController.swift */,
+				7FEB896D1F18EAC000DBB152 /* EmailUserListViewController.xib */,
+			);
+			name = EmailUserListViewController;
+			sourceTree = "<group>";
+		};
 		7FF259551F0CE823008FAF89 /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +505,10 @@
 		7FF259561F0CFF3E008FAF89 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7F6ECA8C1F1E18FA009C2F2F /* back.png */,
+				7F0214951F1CDFCD00204D60 /* mapImg.png */,
+				7F0214931F1CC12F00204D60 /* image.png */,
+				7F02148C1F1CB14700204D60 /* green_home.png */,
 				7FEB895F1F17730400DBB152 /* calculator_icon-32.png */,
 				7FEB89601F17730400DBB152 /* contact-32.png */,
 				7FEB89611F17730400DBB152 /* search_white-32.png */,
@@ -827,10 +881,13 @@
 				7FF259DF1F0CFF85008FAF89 /* search.png in Resources */,
 				7FF259CD1F0CFF85008FAF89 /* off_icon.png in Resources */,
 				7FF259E21F0CFF85008FAF89 /* sign_in_background.jpg in Resources */,
+				7F0214921F1CBF7B00204D60 /* HotelDetailViewController.xib in Resources */,
 				7FF259BF1F0CFF85008FAF89 /* house_icon.png in Resources */,
 				7FF259D01F0CFF85008FAF89 /* on_off.png in Resources */,
 				7FF259E51F0CFF85008FAF89 /* splash.jpg in Resources */,
+				7F02148D1F1CB14700204D60 /* green_home.png in Resources */,
 				7FF25A2B1F0F9769008FAF89 /* SettingTableViewCell2.xib in Resources */,
+				7F0214941F1CC12F00204D60 /* image.png in Resources */,
 				7FF259E91F0CFF85008FAF89 /* white_calculator.png in Resources */,
 				7FF259BC1F0CFF85008FAF89 /* himage.jpg in Resources */,
 				7FF259E11F0CFF85008FAF89 /* setting.png in Resources */,
@@ -868,6 +925,7 @@
 				7FF259BB1F0CFF85008FAF89 /* head_set.png in Resources */,
 				7FC652D21F1643AF00E51170 /* ca-32.png in Resources */,
 				7FF25A261F0F899C008FAF89 /* SettingTableViewCell.xib in Resources */,
+				7F0214961F1CDFCD00204D60 /* mapImg.png in Resources */,
 				7FF259F41F0D0FE7008FAF89 /* SignupViewController.xib in Resources */,
 				7FF259A41F0CFF85008FAF89 /* app_name1.png in Resources */,
 				7FF259A31F0CFF85008FAF89 /* app_name.png in Resources */,
@@ -883,6 +941,7 @@
 				7FF259AE1F0CFF85008FAF89 /* clock_icon.png in Resources */,
 				7FF259F91F0E1946008FAF89 /* SearchTableViewCell.xib in Resources */,
 				7FF259B11F0CFF85008FAF89 /* close_icon.png in Resources */,
+				7FEB896F1F18EAC000DBB152 /* EmailUserListViewController.xib in Resources */,
 				7FF25A211F0F791D008FAF89 /* SettingViewController.xib in Resources */,
 				7FF259AA1F0CFF85008FAF89 /* ca.png in Resources */,
 				7FF259EA1F0CFF85008FAF89 /* white_setting.png in Resources */,
@@ -893,6 +952,7 @@
 				7FF259B91F0CFF85008FAF89 /* groupTwo.png in Resources */,
 				7FF259A51F0CFF85008FAF89 /* bangalo.jpg in Resources */,
 				7FF259D11F0CFF85008FAF89 /* on.png in Resources */,
+				7F6ECA8D1F1E18FA009C2F2F /* back.png in Resources */,
 				7FF259C51F0CFF85008FAF89 /* ic_launcher in Resources */,
 				7FF259E31F0CFF85008FAF89 /* sign_in_bg.jpg in Resources */,
 				7FC652D31F1643AF00E51170 /* icon-bell-32.png in Resources */,
@@ -917,6 +977,7 @@
 				7FF259BD1F0CFF85008FAF89 /* hous_wall.jpg in Resources */,
 				7FF259DE1F0CFF85008FAF89 /* search-icon-png-4.png in Resources */,
 				7FEB896A1F17730400DBB152 /* white_setting-32.png in Resources */,
+				7F6ECA921F1E3487009C2F2F /* MapHouseViewController.xib in Resources */,
 				7FF259A21F0CFF85008FAF89 /* agent.png in Resources */,
 				7FF259B51F0CFF85008FAF89 /* file_icon.png in Resources */,
 				7FF259E41F0CFF85008FAF89 /* signin_bg.jpg in Resources */,
@@ -992,11 +1053,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F0214911F1CBF7B00204D60 /* HotelDetailViewController.swift in Sources */,
 				7FF259F31F0D0FE7008FAF89 /* SignupViewController.swift in Sources */,
 				7FF25A391F13810B008FAF89 /* FeeCalculatorViewController.swift in Sources */,
 				7F6A4B931F0CBCDC002C398B /* ViewController.swift in Sources */,
 				7FF25A2F1F0FA54E008FAF89 /* SupportViewController.swift in Sources */,
 				7FF25A1B1F0F6FAF008FAF89 /* NotificationTableViewCell.swift in Sources */,
+				7FEB896E1F18EAC000DBB152 /* EmailUserListViewController.swift in Sources */,
 				7FF25A161F0F6E37008FAF89 /* NotificationViewController.swift in Sources */,
 				7FF259FD1F0E238C008FAF89 /* FilterViewController.swift in Sources */,
 				7FF25A201F0F791D008FAF89 /* SettingViewController.swift in Sources */,
@@ -1011,6 +1074,7 @@
 				7FF25A0C1F0E60CF008FAF89 /* DashboardViewController.swift in Sources */,
 				7F6A4BC51F0CCE32002C398B /* HomeViewController.swift in Sources */,
 				7FF25A111F0E6225008FAF89 /* DashboardTableViewCell.swift in Sources */,
+				7F6ECA911F1E3487009C2F2F /* MapHouseViewController.swift in Sources */,
 				7FF25A3E1F139F5C008FAF89 /* NotificationSettingViewController.swift in Sources */,
 				7FF259F81F0E1946008FAF89 /* SearchTableViewCell.swift in Sources */,
 				7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */,
@@ -1159,18 +1223,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
 				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
-				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
+				PROVISIONING_PROFILE = "c83b37d6-8f13-4c4a-b8e1-4a0a67ef9959";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList APPSTORE";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1180,17 +1245,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
 				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
-				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
+				PROVISIONING_PROFILE = "c83b37d6-8f13-4c4a-b8e1-4a0a67ef9959";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList APPSTORE";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

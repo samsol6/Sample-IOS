@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
     var tabBarController: UITabBarController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
 
         let screenSize: CGRect = UIScreen.main.bounds
@@ -63,13 +64,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         let feCal = FeeCalculatorViewController(nibName: "FeeCalculatorViewController", bundle: nil)
 //        feCal.tabBarItem.title = "calculator"
 
-        let controllers = [ dashboardVC,notificationVc, searchVc, flatCalVc, supportVc]
+        let controllers = [ searchVc, notificationVc, dashboardVC, flatCalVc, supportVc]
         //notificationVc, profileVc, filterVc, dashboardVC,
         tabBarController?.viewControllers = controllers
         
         //first controller
-        self.tabBarController?.tabBar.items?[0].image = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[0].selectedImage = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[0].image = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[0].selectedImage = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
         self.tabBarController?.tabBar.items?[0].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         
@@ -79,8 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         self.tabBarController?.tabBar.items?[1].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         //3rd controller
-        self.tabBarController?.tabBar.items?[2].image = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[2].selectedImage = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[2].image = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[2].selectedImage = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
         self.tabBarController?.tabBar.items?[2].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         //4th controller
