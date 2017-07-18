@@ -17,6 +17,7 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
     @IBOutlet weak var rezListLogo: UIImageView!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    var isLogin = Bool()
     
     var activeField: UITextField?
     
@@ -78,6 +79,18 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if let isLog : Bool = UserDefaults.standard.bool(forKey: "isLogin"){
+            self.isLogin = true
+        }
+        
+       // if(self.isLogin){
+        //    let vc = SearchViewController(
+        //        nibName: "SearchViewController",
+        //        bundle: nil)
+        //    self.present(vc, animated: true, completion: nil)
+
+       // }
+        
         self.scrollView.contentSize = CGSize(width: 320, height: 568)
         let tap = UITapGestureRecognizer(target: self, action: #selector
             (tapFunction))
@@ -129,10 +142,10 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
     
 
     @IBAction func signinBtnClicked(_ sender: UIButton) {
-        //let vc = SearchViewController(
-         //   nibName: "SearchViewController",
-         //   bundle: nil)
-        //self.present(vc, animated: true, completion: nil)
+//        let vc = SearchViewController(
+//            nibName: "SearchViewController",
+//            bundle: nil)
+//        self.present(vc, animated: true, completion: nil)
         
         
         let strEmail=emailField.text!;
@@ -157,9 +170,15 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
                     if response.result.isSuccess  && response.response?.statusCode == 200{
                         let dataResult: NSDictionary = (response.result.value as! NSDictionary?)!
                         if dataResult["user"] != nil {
-                            
-                            let vc = DashboardViewController(
-                               nibName: "DashboardViewController",
+                            let user = dataResult["user"] as? NSDictionary
+                            if let role : String = (((user as AnyObject).value(forKey: "role")as AnyObject)as? String)!{
+                                UserDefaults.standard.set(role, forKey: "role")
+                               // UserDefaults.standard.set(true, forKey: "isLogin")
+                                UserDefaults.standard.synchronize()
+                            }
+
+                            let vc = SearchViewController(
+                               nibName: "SearchViewController",
                                bundle: nil)
                             self.present(vc, animated: true, completion: nil)
                         }

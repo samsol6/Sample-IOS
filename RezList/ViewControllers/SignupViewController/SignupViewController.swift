@@ -153,14 +153,10 @@ class SignupViewController: ValidationViewController, UITextFieldDelegate {
                         let dataResult: NSDictionary = (response.result.value as! NSDictionary?)!
                         if dataResult["user"] != nil {
                             
-                            let alertController = UIAlertController(title: "Alert", message: "You have successfully registered", preferredStyle: .alert)
+                            let alertController = UIAlertController(title: "Successfully registered", message: "Please login to continue", preferredStyle: .alert)
                             
                             let OKAction = UIAlertAction(title: "OK", style: .default) { action in
-                                let vc = SearchViewController(
-                                    nibName: "SearchViewController",
-                                    bundle: nil)
-                                self.present(vc, animated: true, completion: nil)
-                            }
+                                self.dismiss(animated: true, completion: nil)                            }
                             alertController.addAction(OKAction)
                             self.present(alertController, animated: true)
                         }
@@ -177,11 +173,8 @@ class SignupViewController: ValidationViewController, UITextFieldDelegate {
     }
    
     @IBAction func goToSignin(_ sender: UIButton) {
-        let vc = HomeViewController(
-            nibName: "HomeViewController",
-            bundle: nil)
-        self.present(vc, animated: true, completion: nil)
 
+        self.dismiss(animated: true, completion: nil)
     }
 
     /*
