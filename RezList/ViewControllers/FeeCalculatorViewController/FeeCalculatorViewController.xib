@@ -12,12 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeeCalculatorViewController" customModule="RezList" customModuleProvider="target">
             <connections>
+                <outlet property="bedsPicker" destination="Awa-56-fxu" id="BIB-sV-zu3"/>
                 <outlet property="email" destination="rdN-4L-BZt" id="6lV-Xl-WJ4"/>
                 <outlet property="firstName" destination="gs1-YA-aFe" id="aoJ-Za-Cra"/>
                 <outlet property="lastName" destination="6A7-t2-5pa" id="Vzv-dK-9zz"/>
                 <outlet property="maxPrice" destination="ciz-gX-kD5" id="yYb-Pb-sxo"/>
                 <outlet property="minPrice" destination="RFf-My-wu4" id="2Xn-dy-MZ4"/>
                 <outlet property="phone" destination="z6U-MK-JJP" id="exq-1m-Cx5"/>
+                <outlet property="propertyPicker" destination="cKS-JF-Ue6" id="RS0-H2-30k"/>
                 <outlet property="scrollView" destination="1tb-B5-tQL" id="gsN-Ag-aE8"/>
                 <outlet property="sqFt" destination="ePn-FR-0D1" id="k9v-7J-Eue"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,6 +49,9 @@
                                 <constraint firstAttribute="height" constant="30" id="i61-2h-klR"/>
                             </constraints>
                             <state key="normal" image="close_icon.png"/>
+                            <connections>
+                                <action selector="goBack:" destination="-1" eventType="touchUpInside" id="o0R-W1-zU6"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Gk-PZ-fGS">
                             <rect key="frame" x="69" y="16" width="237" height="56"/>
@@ -222,7 +227,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-1a-Sxx">
                             <rect key="frame" x="199" y="520" width="150" height="21"/>
@@ -240,7 +245,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Propery Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsO-pW-cLW">
                             <rect key="frame" x="26" y="440" width="151" height="21"/>
@@ -269,7 +274,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1T-ZB-959">
                             <rect key="frame" x="199" y="600" width="150" height="21"/>
@@ -307,7 +312,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="scanBarCode:" destination="-1" eventType="touchUpInside" id="H63-fP-jer"/>
+                                <action selector="filterFlatsBtnClicked:" destination="-1" eventType="touchUpInside" id="yqT-5i-ePK"/>
                             </connections>
                         </button>
                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKS-JF-Ue6">

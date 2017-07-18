@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeeCalculatorViewController: UIViewController, UITextFieldDelegate {
+class FeeCalculatorViewController: ValidationViewController, UITextFieldDelegate, UIPickerViewDelegate,  UIPickerViewDataSource {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -21,6 +21,12 @@ class FeeCalculatorViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var maxPrice: UITextField!
     @IBOutlet weak var sqFt: UITextField!
     
+    @IBOutlet weak var propertyPicker: UIPickerView!
+    @IBOutlet weak var bedsPicker: UIPickerView!
+    
+    
+    var bedsArray = NSArray()
+    var bedString = String()
     
     var activeField: UITextField?
     
@@ -107,12 +113,55 @@ class FeeCalculatorViewController: UIViewController, UITextFieldDelegate {
         self.maxPrice.delegate = self
         self.sqFt.delegate = self
 
+        bedsArray = ["1", "2", "3", "4", "5"]
+        self.propertyPicker.delegate = self
+        self.bedsPicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Mark: UIPicker view delegate functions
+    
+    //Mark: PickerView delegate functions
+    func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        
+        return 1;
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if(pickerView == self.propertyPicker){
+            return 5
+        }
+        else{
+            return 5
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        //        // return list[row]
+        if(pickerView == self.propertyPicker){
+            return "House/Condo"
+        }
+        else{
+            return bedsArray.object(at: row) as? String
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+
+        if(pickerView == self.propertyPicker){
+            
+        }
+        else{
+            let n :String=(((self.bedsArray.object(at: row) as AnyObject)) as? String)!
+            bedString = n
+            
+        }
+        
+    }
+    
+    //end
     
     //Mark: UITapGesture method
     func tapFunction(sender:UITapGestureRecognizer){
@@ -152,14 +201,54 @@ class FeeCalculatorViewController: UIViewController, UITextFieldDelegate {
     //end
 
     
-    @IBAction func scanBarCode(_ sender: UIButton) {
-//        let vc = ScannerViewController(
-//            nibName: "ScannerViewController",
+    @IBAction func filterFlatsBtnClicked(_ sender: UIButton) {
+        
+        if(self.minPrice.text?.characters.count == 0){
+            ShowAlert("please enter min price")
+            return
+        }
+        if(self.maxPrice.text?.characters.count == 0){
+            ShowAlert("please enter max price")
+            return
+        }
+        
+        var minPriceInt = Int()
+        var maxPriceInt = Int()
+        var areaInt = Int()
+        if let minPrice : String = self.minPrice.text{
+            minPriceInt = Int(minPrice)!
+        }
+        if let maxPrice : String = self.maxPrice.text{
+            maxPriceInt = Int(maxPrice)!
+        }
+        if let area : String = self.sqFt.text{
+            if( self.sqFt.text?.characters.count != 0){
+                areaInt = Int(area)!
+            }
+        }
+        
+        
+        let vc = SearchViewController(
+            nibName: "SearchViewController",
+            bundle: nil)
+        vc.minPrice = minPriceInt
+        vc.maxPrice = maxPriceInt
+        if(self.bedString.characters.count != 0){
+            vc.bedFilter   = Int(bedString)!
+        }
+        vc.areaFilter  = areaInt
+        
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    @IBAction func goBack(_ sender: UIButton) {
+//        let vc = FeeCalculatorViewController(
+//            nibName: "FeeCalculatorViewController",
 //            bundle: nil)
 //        self.present(vc, animated: true, completion: nil)
-
+        
+        self.dismiss(animated: true, completion: nil)
     }
-    
     /*
     // MARK: - Navigation
 
