@@ -45,6 +45,12 @@ class HotelDetailViewController: UIViewController {
     
     
     @IBAction func openGallery(_ sender: UIButton) {
+        let vc = HotelScreensViewController(
+            nibName: "HotelScreensViewController",
+            bundle: nil)
+        vc.dict = self.dict
+        self.present(vc, animated: true, completion: nil)
+
     }
     
     
@@ -210,12 +216,31 @@ class HotelDetailViewController: UIViewController {
         vc.longitude = longitude
         vc.address = fullAddress
         self.present(vc, animated: true, completion: nil)
-
     }
+    
     @IBAction func goBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func openStreetView(_ sender: UIButton) {
+        var latitude = Double()
+        var longitude = Double()
+        let geoLocationObj : NSDictionary = (((dict as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
+        if let lat: Double = (((geoLocationObj as AnyObject).value(forKey: "lat")as AnyObject)as? Double)!{
+            latitude = lat
+        }
+        if let long: Double = (((geoLocationObj as AnyObject).value(forKey: "lng")as AnyObject)as? Double)!{
+            longitude = long
+        }
+        
+        let vc = MapHouseViewController(
+            nibName: "MapHouseViewController",
+            bundle: nil)
+        vc.latitude  = latitude
+        vc.longitude = longitude
+        vc.address = fullAddress
+        self.present(vc, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

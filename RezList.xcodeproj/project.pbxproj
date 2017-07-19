@@ -23,6 +23,10 @@
 		7F6ECA8D1F1E18FA009C2F2F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA8C1F1E18FA009C2F2F /* back.png */; };
 		7F6ECA911F1E3487009C2F2F /* MapHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ECA8F1F1E3487009C2F2F /* MapHouseViewController.swift */; };
 		7F6ECA921F1E3487009C2F2F /* MapHouseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */; };
+		7F6ECA961F1E3DA7009C2F2F /* HotelScreensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ECA941F1E3DA7009C2F2F /* HotelScreensViewController.swift */; };
+		7F6ECA971F1E3DA7009C2F2F /* HotelScreensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA951F1E3DA7009C2F2F /* HotelScreensViewController.xib */; };
+		7F6ECA9B1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ECA991F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift */; };
+		7F6ECA9C1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA9A1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib */; };
 		7FB675111F1539C300CE927D /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB675101F1539C300CE927D /* ValidationViewController.swift */; };
 		7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC652C71F16243E00E51170 /* ScannerViewController.swift */; };
 		7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC652C81F16243E00E51170 /* ScannerViewController.xib */; };
@@ -193,6 +197,10 @@
 		7F6ECA8C1F1E18FA009C2F2F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = images/back.png; sourceTree = "<group>"; };
 		7F6ECA8F1F1E3487009C2F2F /* MapHouseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapHouseViewController.swift; path = ViewControllers/MapHouseViewController/MapHouseViewController.swift; sourceTree = "<group>"; };
 		7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapHouseViewController.xib; path = ViewControllers/MapHouseViewController/MapHouseViewController.xib; sourceTree = "<group>"; };
+		7F6ECA941F1E3DA7009C2F2F /* HotelScreensViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotelScreensViewController.swift; path = ViewControllers/HotelScreensViewController/HotelScreensViewController.swift; sourceTree = "<group>"; };
+		7F6ECA951F1E3DA7009C2F2F /* HotelScreensViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelScreensViewController.xib; path = ViewControllers/HotelScreensViewController/HotelScreensViewController.xib; sourceTree = "<group>"; };
+		7F6ECA991F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotelScreenCollectionViewCell.swift; path = ViewControllers/HotelScreensViewController/HotelScreenCell/HotelScreenCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F6ECA9A1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelScreenCollectionViewCell.xib; path = ViewControllers/HotelScreensViewController/HotelScreenCell/HotelScreenCollectionViewCell.xib; sourceTree = "<group>"; };
 		7FB675101F1539C300CE927D /* ValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationViewController.swift; path = ViewControllers/ValidationViewController/ValidationViewController.swift; sourceTree = "<group>"; };
 		7FC652C71F16243E00E51170 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = ViewControllers/ScannerViewController/ScannerViewController.swift; sourceTree = "<group>"; };
 		7FC652C81F16243E00E51170 /* ScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScannerViewController.xib; path = ViewControllers/ScannerViewController/ScannerViewController.xib; sourceTree = "<group>"; };
@@ -427,6 +435,7 @@
 		7F6A4BC21F0CCD41002C398B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F6ECA931F1E3D71009C2F2F /* HotelScreensViewController */,
 				7F6ECA8E1F1E341B009C2F2F /* MapHouseViewController */,
 				7F02148E1F1CBF4E00204D60 /* HotelDetailViewController */,
 				7FEB896B1F18EA9900DBB152 /* EmailUserListViewController */,
@@ -464,6 +473,25 @@
 				7F6ECA901F1E3487009C2F2F /* MapHouseViewController.xib */,
 			);
 			name = MapHouseViewController;
+			sourceTree = "<group>";
+		};
+		7F6ECA931F1E3D71009C2F2F /* HotelScreensViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F6ECA981F1E3F42009C2F2F /* HotelScreenCell */,
+				7F6ECA941F1E3DA7009C2F2F /* HotelScreensViewController.swift */,
+				7F6ECA951F1E3DA7009C2F2F /* HotelScreensViewController.xib */,
+			);
+			name = HotelScreensViewController;
+			sourceTree = "<group>";
+		};
+		7F6ECA981F1E3F42009C2F2F /* HotelScreenCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F6ECA991F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift */,
+				7F6ECA9A1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib */,
+			);
+			name = HotelScreenCell;
 			sourceTree = "<group>";
 		};
 		7FB6750F1F1539A600CE927D /* ValidationViewController */ = {
@@ -914,6 +942,7 @@
 				7FF259D51F0CFF85008FAF89 /* person.png in Resources */,
 				7FF259E01F0CFF85008FAF89 /* setting_icon.png in Resources */,
 				7FF259C71F0CFF85008FAF89 /* location_button.png in Resources */,
+				7F6ECA971F1E3DA7009C2F2F /* HotelScreensViewController.xib in Resources */,
 				7FF259A71F0CFF85008FAF89 /* bell_white.png in Resources */,
 				7F6A4B9B1F0CBCDC002C398B /* LaunchScreen.storyboard in Resources */,
 				7FF259E61F0CFF85008FAF89 /* Thumbs.db in Resources */,
@@ -945,6 +974,7 @@
 				7FF25A211F0F791D008FAF89 /* SettingViewController.xib in Resources */,
 				7FF259AA1F0CFF85008FAF89 /* ca.png in Resources */,
 				7FF259EA1F0CFF85008FAF89 /* white_setting.png in Resources */,
+				7F6ECA9C1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib in Resources */,
 				7FF259C31F0CFF85008FAF89 /* house_wall.jpg in Resources */,
 				7FF259A91F0CFF85008FAF89 /* bells.png in Resources */,
 				7F6A4B981F0CBCDC002C398B /* Assets.xcassets in Resources */,
@@ -1058,6 +1088,7 @@
 				7FF25A391F13810B008FAF89 /* FeeCalculatorViewController.swift in Sources */,
 				7F6A4B931F0CBCDC002C398B /* ViewController.swift in Sources */,
 				7FF25A2F1F0FA54E008FAF89 /* SupportViewController.swift in Sources */,
+				7F6ECA9B1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift in Sources */,
 				7FF25A1B1F0F6FAF008FAF89 /* NotificationTableViewCell.swift in Sources */,
 				7FEB896E1F18EAC000DBB152 /* EmailUserListViewController.swift in Sources */,
 				7FF25A161F0F6E37008FAF89 /* NotificationViewController.swift in Sources */,
@@ -1069,6 +1100,7 @@
 				7FF25A051F0E2C32008FAF89 /* DLRadioButton.m in Sources */,
 				7FF25A341F1356C1008FAF89 /* FlatFeeCalculatorViewController.swift in Sources */,
 				7FF25A2A1F0F9769008FAF89 /* SettingTableViewCell2.swift in Sources */,
+				7F6ECA961F1E3DA7009C2F2F /* HotelScreensViewController.swift in Sources */,
 				7FF259EE1F0D020C008FAF89 /* ProfileViewController.swift in Sources */,
 				7FF259531F0CE81A008FAF89 /* SearchViewController.swift in Sources */,
 				7FF25A0C1F0E60CF008FAF89 /* DashboardViewController.swift in Sources */,
