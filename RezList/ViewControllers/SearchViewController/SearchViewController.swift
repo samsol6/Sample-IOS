@@ -79,7 +79,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
 //        map.showAnnotations(map.annotations, animated: true)
         //end correct code...*******************************
         
-        self.tbl.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+//        self.tbl.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+//        self.tbl.register(UINib(nibName: "SearchTableViewCell~ipad", bundle: nil), forCellReuseIdentifier: "searchCell")
         self.tbl.delegate = self
         self.tbl.dataSource = self
         
@@ -91,11 +92,39 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         let screenSize: CGRect = UIScreen.main.bounds
         let screenWidth = screenSize.width
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
-        appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
-        appDelegate.window?.rootViewController = appDelegate.tabBarController
+        
+        let deviceIdiom = UIScreen.main.traitCollection.userInterfaceIdiom
+        
+        // 2. check the idiom
+            
+        if (deviceIdiom == .pad)
+        {
+            self.tbl.register(UINib(nibName: "SearchTableViewCell~ipad", bundle: nil), forCellReuseIdentifier: "searchCell")
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:100)
+            appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
+            appDelegate.window?.rootViewController = appDelegate.tabBarController
 
+        }
+        else if(deviceIdiom == .phone )
+        {
+            self.tbl.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "searchCell")
+
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
+            appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
+            appDelegate.window?.rootViewController = appDelegate.tabBarController
+        }
+        
+            //correct code **********************
+//        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
+//        appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
+//        appDelegate.window?.rootViewController = appDelegate.tabBarController
+
+            
+            //end correct code... ******************
+            
 //        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 //        appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
 //        appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
@@ -184,7 +213,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        if(UIDevice.current.userInterfaceIdiom == .phone){
+            return 200
+        }
+        else{
+            return 400
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
