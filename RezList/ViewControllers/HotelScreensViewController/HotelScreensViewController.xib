@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HotelScreensViewController" customModule="RezList" customModuleProvider="target">
             <connections>
                 <outlet property="colView" destination="ebc-XI-rde" id="pym-Hf-3F8"/>
+                <outlet property="pageNum" destination="47j-gs-VQy" id="Wb2-hX-5bb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,12 +35,24 @@
                                 <action selector="goBack:" destination="-1" eventType="touchUpInside" id="h9a-RC-SoQ"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47j-gs-VQy">
+                            <rect key="frame" x="77" y="33" width="240" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="OyD-mz-HAS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="74c-dn-0ZT" firstAttribute="top" secondItem="Mia-mV-W7N" secondAttribute="top" constant="32" id="K9N-Pv-dqY"/>
+                        <constraint firstItem="47j-gs-VQy" firstAttribute="top" secondItem="Mia-mV-W7N" secondAttribute="top" constant="33" id="NQZ-f5-XLU"/>
                         <constraint firstItem="74c-dn-0ZT" firstAttribute="leading" secondItem="Mia-mV-W7N" secondAttribute="leading" constant="20" id="VGS-mG-Nby"/>
+                        <constraint firstItem="47j-gs-VQy" firstAttribute="leading" secondItem="74c-dn-0ZT" secondAttribute="trailing" constant="32" id="j8k-j6-9D7"/>
                         <constraint firstAttribute="height" constant="86" id="kXT-ZE-Ut4"/>
+                        <constraint firstAttribute="trailing" secondItem="47j-gs-VQy" secondAttribute="trailing" constant="58" id="xqr-7i-ACO"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ebc-XI-rde">
@@ -48,7 +61,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="270" id="ahj-m6-3C9"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QKC-Es-h26">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="QKC-Es-h26">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>

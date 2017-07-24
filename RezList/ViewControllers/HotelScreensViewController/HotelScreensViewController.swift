@@ -12,13 +12,19 @@ import AlamofireImage
 
 class HotelScreensViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var pageNum: UILabel!
     @IBOutlet weak var colView: UICollectionView!
     
     var dict = NSDictionary()
+    var photoArray = NSArray()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let photoObj : NSArray = (((dict as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
+        self.photoArray = photoObj
+        
         self.colView.register(UINib(nibName: "HotelScreenCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "hotelCell")
             
         self.colView.delegate   = self
@@ -54,8 +60,14 @@ class HotelScreensViewController: UIViewController, UICollectionViewDelegate, UI
         return 1
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //setting text
+        self.pageNum.text = "\(indexPath.row + 1)" + " of " + "\(self.photoArray.count)"
+        //end
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 2
+       return self.photoArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,6 +76,7 @@ class HotelScreensViewController: UIViewController, UICollectionViewDelegate, UI
         
         let addressObj : NSDictionary = (((dict as AnyObject).value(forKey: "address")as AnyObject)as? NSDictionary)!
         let photoObj : NSArray = (((dict as AnyObject).value(forKey: "photos")as AnyObject)as? NSArray)!
+        
          let uniqueKey : String = (((addressObj as AnyObject).value(forKey: "unit")as AnyObject)as? String)!
         if let photoUrl : String = ((photoObj.object(at: indexPath.row) as AnyObject) as? String){
             if let imgData = UserDefaults.standard.object(forKey: uniqueKey+"\(indexPath.row)") as? Data

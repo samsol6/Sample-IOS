@@ -53,8 +53,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         optionsArr = ["Profile", "Explore", "Flat Fee Calculator", "Notifications","Settings", "Log out"]
         adminOptionsArray = ["Profile", "Explore", "Flat Fee Calculator", "Notifications", "Settings", "Log out", "User List"]
-        iconsArray = ["contact.png", "search_white.png", "white_cal.png", "white_bell.png" , "logout.png", "white_setting.png"]
-        adminIconsArray = ["contact.png", "search_white.png", "white_cal.png", "white_bell.png" , "white_setting.png", "logout.png" , "group.png"]
+//        iconsArray = ["contact.png", "search_white.png", "white_cal.png", "white_bell.png" , "logout.png", "white_setting.png"]
+        iconsArray = ["contactWhiteNew.png", "search_white.png", "white_calNew.png", "white_bellNew.png" , "white_settingNew.png", "powerNew.png"]
+        
+        adminIconsArray = ["contact.png", "search_white.png", "white_calNew.png", "white_bellNew.png" , "white_settingNew.png", "powerNew.png" , "group.png"]
         
         //end
         self.tbl.register(UINib(nibName: "DashboardTableViewCell", bundle: nil), forCellReuseIdentifier: "DashboardCell")
