@@ -69,29 +69,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         tabBarController?.viewControllers = controllers
         
         //first controller
-        self.tabBarController?.tabBar.items?[0].image = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[0].selectedImage = UIImage(named: "search_white-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[0].image = UIImage(named: "searchTab")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[0].selectedImage = UIImage(named: "searchTab")?.withRenderingMode(.alwaysOriginal)
+
         self.tabBarController?.tabBar.items?[0].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         
         //2nd controller
-        self.tabBarController?.tabBar.items?[1].image = UIImage(named: "white_bell-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[1].selectedImage = UIImage(named: "white_bell-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[1].image = UIImage(named: "white_bellTab")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[1].selectedImage = UIImage(named: "white_bellTab")?.withRenderingMode(.alwaysOriginal)
+        
         self.tabBarController?.tabBar.items?[1].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         //3rd controller
-        self.tabBarController?.tabBar.items?[2].image = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[2].selectedImage = UIImage(named: "contact-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[2].image = UIImage(named: "contactTab")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[2].selectedImage = UIImage(named: "contactTab")?.withRenderingMode(.alwaysOriginal)
         self.tabBarController?.tabBar.items?[2].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         //4th controller
-        self.tabBarController?.tabBar.items?[3].image = UIImage(named: "white_cal-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[3].selectedImage = UIImage(named: "white_cal-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[3].image = UIImage(named: "calculatorTab")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[3].selectedImage = UIImage(named: "calculatorTab")?.withRenderingMode(.alwaysOriginal)
         self.tabBarController?.tabBar.items?[3].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         //5th controller
-        self.tabBarController?.tabBar.items?[4].image = UIImage(named: "white_setting-32.png")?.withRenderingMode(.alwaysOriginal)
-        self.tabBarController?.tabBar.items?[4].selectedImage = UIImage(named: "white_setting-32.png")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[4].image = UIImage(named: "settingTab")?.withRenderingMode(.alwaysOriginal)
+        self.tabBarController?.tabBar.items?[4].selectedImage = UIImage(named: "settingTab")?.withRenderingMode(.alwaysOriginal)
         self.tabBarController?.tabBar.items?[4].imageInsets = UIEdgeInsets(top: 4, left: -4, bottom: -4, right: 4)
         
         // tabbar controller
