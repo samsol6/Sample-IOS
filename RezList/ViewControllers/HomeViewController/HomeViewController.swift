@@ -79,8 +79,13 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if let isLog : Bool = UserDefaults.standard.bool(forKey: "isLogin"){
-            self.isLogin = true
+        if let isLog : String = UserDefaults.standard.value(forKey: "isLogin") as! String?{
+            if(isLog == "login"){
+                let vc = SearchViewController(
+                nibName: "SearchViewController",
+                bundle: nil)
+            self.present(vc, animated: true, completion: nil)
+            }
         }
         
        // if(self.isLogin){
@@ -173,13 +178,15 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
                             let user = dataResult["user"] as? NSDictionary
                             if let role : String = (((user as AnyObject).value(forKey: "role")as AnyObject)as? String)!{
                                 UserDefaults.standard.set(role, forKey: "role")
-                               // UserDefaults.standard.set(true, forKey: "isLogin")
+                                UserDefaults.standard.set("login", forKey: "isLogin")
                                 UserDefaults.standard.synchronize()
                             }
 
                             let vc = SearchViewController(
                                nibName: "SearchViewController",
                                bundle: nil)
+                            vc.askLocation = true
+                            vc.askNotification = true
                             self.present(vc, animated: true, completion: nil)
                         }
                         else{
