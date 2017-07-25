@@ -10,6 +10,7 @@ import UIKit
 
 class ScannerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var codeScanner: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

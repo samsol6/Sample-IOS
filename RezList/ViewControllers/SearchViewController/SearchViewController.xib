@@ -18,6 +18,7 @@
                 <outlet property="mapView" destination="7kL-qj-66p" id="IgA-j9-WPd"/>
                 <outlet property="menuBtn" destination="1MP-z4-4Fw" id="8PU-q5-gyK"/>
                 <outlet property="qrCodeLbl" destination="fz5-Wf-QXY" id="787-vp-RCN"/>
+                <outlet property="scannerTbl" destination="iWx-fB-vKL" id="MRO-6L-7z7"/>
                 <outlet property="searchField" destination="CKx-mU-bDB" id="QLF-Cx-5Qg"/>
                 <outlet property="tbl" destination="bFm-lJ-z1w" id="PEf-sB-qwp"/>
                 <outlet property="topView" destination="reR-TK-bRT" id="Wbo-TZ-h8P"/>
@@ -108,7 +109,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                         </searchBar>
-                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-M9-ydb">
+                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-M9-ydb">
                             <rect key="frame" x="0.0" y="44" width="375" height="493"/>
                         </mapView>
                     </subviews>
@@ -133,6 +134,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iWx-fB-vKL">
+                    <rect key="frame" x="214" y="61" width="161" height="52"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="52" id="IZV-4R-EOQ"/>
+                        <constraint firstAttribute="width" constant="161" id="k8M-vb-0cI"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -144,10 +153,12 @@
                 <constraint firstAttribute="bottom" secondItem="bFm-lJ-z1w" secondAttribute="bottom" id="Kir-vt-OHg"/>
                 <constraint firstAttribute="bottom" secondItem="fz5-Wf-QXY" secondAttribute="bottom" id="NAA-ca-f6S"/>
                 <constraint firstAttribute="trailing" secondItem="bFm-lJ-z1w" secondAttribute="trailing" id="PBJ-Jn-HXS"/>
+                <constraint firstItem="iWx-fB-vKL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="61" id="Stm-l1-DGc"/>
                 <constraint firstAttribute="trailing" secondItem="reR-TK-bRT" secondAttribute="trailing" id="XRT-84-Pvh"/>
                 <constraint firstItem="bFm-lJ-z1w" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="YAN-7w-CcU"/>
                 <constraint firstItem="7kL-qj-66p" firstAttribute="top" secondItem="reR-TK-bRT" secondAttribute="bottom" constant="50" id="bWi-De-EqP"/>
                 <constraint firstItem="reR-TK-bRT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lXZ-td-aLW"/>
+                <constraint firstAttribute="trailing" secondItem="iWx-fB-vKL" secondAttribute="trailing" id="lxO-Vy-2Xk"/>
                 <constraint firstItem="reR-TK-bRT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nfH-E9-sKL"/>
                 <constraint firstAttribute="trailing" secondItem="fz5-Wf-QXY" secondAttribute="trailing" id="vO6-JM-d9L"/>
                 <constraint firstItem="bFm-lJ-z1w" firstAttribute="top" secondItem="reR-TK-bRT" secondAttribute="bottom" constant="50" id="wXj-QY-4eb"/>

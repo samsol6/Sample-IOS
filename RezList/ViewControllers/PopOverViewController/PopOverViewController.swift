@@ -22,6 +22,9 @@ class PopOverViewController: UIViewController {
     }
     
 
+    @IBAction func scannerBtnTapped(_ sender: UIButton) {
+        print("hello")
+    }
     /*
     // MARK: - Navigation
 

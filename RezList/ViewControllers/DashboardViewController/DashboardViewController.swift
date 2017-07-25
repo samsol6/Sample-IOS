@@ -120,7 +120,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 let homeViewController = HomeViewController()
                 appDelegate.window?.rootViewController = homeViewController
                 
-                UserDefaults.standard.set(false, forKey: "isLogin")
+                UserDefaults.standard.set("not", forKey: "isLogin")
                 UserDefaults.standard.synchronize()
             }
         }
@@ -130,7 +130,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
                 appDelegate.tabBarController?.selectedIndex = 0
                 
                 
-                UserDefaults.standard.set(false, forKey: "isLogin")
+                UserDefaults.standard.set("not", forKey: "isLogin")
                 UserDefaults.standard.synchronize()
                 
                 let homeViewController = HomeViewController()

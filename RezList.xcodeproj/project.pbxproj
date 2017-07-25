@@ -12,6 +12,18 @@
 		7F0214921F1CBF7B00204D60 /* HotelDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */; };
 		7F0214941F1CC12F00204D60 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214931F1CC12F00204D60 /* image.png */; };
 		7F0214961F1CDFCD00204D60 /* mapImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0214951F1CDFCD00204D60 /* mapImg.png */; };
+		7F54BC651F25F0D9007165CD /* contactWhiteNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC641F25F0D9007165CD /* contactWhiteNew.png */; };
+		7F54BC691F25F524007165CD /* white_bellNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC681F25F524007165CD /* white_bellNew.png */; };
+		7F54BC6B1F25F558007165CD /* white_calNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC6A1F25F558007165CD /* white_calNew.png */; };
+		7F54BC6D1F25F606007165CD /* white_settingNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC6C1F25F606007165CD /* white_settingNew.png */; };
+		7F54BC6F1F25F650007165CD /* powerNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC6E1F25F650007165CD /* powerNew.png */; };
+		7F54BC701F25FC8C007165CD /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F6A4B9C1F0CBCDC002C398B /* Info.plist */; };
+		7F54BC731F261E23007165CD /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F54BC711F261E23007165CD /* UserNotifications.framework */; };
+		7F54BC741F261E23007165CD /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F54BC721F261E23007165CD /* UserNotificationsUI.framework */; };
+		7F54BC781F2630AC007165CD /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54BC761F2630AC007165CD /* PopOverViewController.swift */; };
+		7F54BC791F2630AC007165CD /* PopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC771F2630AC007165CD /* PopOverViewController.xib */; };
+		7F54BC7D1F263530007165CD /* ScannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54BC7B1F263530007165CD /* ScannerTableViewCell.swift */; };
+		7F54BC7E1F263530007165CD /* ScannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F54BC7C1F263530007165CD /* ScannerTableViewCell.xib */; };
 		7F6A4B911F0CBCDC002C398B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4B901F0CBCDC002C398B /* AppDelegate.swift */; };
 		7F6A4B931F0CBCDC002C398B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6A4B921F0CBCDC002C398B /* ViewController.swift */; };
 		7F6A4B981F0CBCDC002C398B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6A4B971F0CBCDC002C398B /* Assets.xcassets */; };
@@ -27,6 +39,10 @@
 		7F6ECA971F1E3DA7009C2F2F /* HotelScreensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA951F1E3DA7009C2F2F /* HotelScreensViewController.xib */; };
 		7F6ECA9B1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ECA991F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift */; };
 		7F6ECA9C1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ECA9A1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib */; };
+		7FAF5C6C1F1F52CA00DEEF94 /* HomeViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF5C6B1F1F52CA00DEEF94 /* HomeViewController~ipad.xib */; };
+		7FAF5C6F1F1F58CB00DEEF94 /* SignupViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF5C6E1F1F58CB00DEEF94 /* SignupViewController~ipad.xib */; };
+		7FAF5C751F1F606700DEEF94 /* SearchViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF5C741F1F606700DEEF94 /* SearchViewController~ipad.xib */; };
+		7FAF5C791F1F758A00DEEF94 /* SearchTableViewCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FAF5C781F1F758A00DEEF94 /* SearchTableViewCell~ipad.xib */; };
 		7FB675111F1539C300CE927D /* ValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB675101F1539C300CE927D /* ValidationViewController.swift */; };
 		7FC652C91F16243E00E51170 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC652C71F16243E00E51170 /* ScannerViewController.swift */; };
 		7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC652C81F16243E00E51170 /* ScannerViewController.xib */; };
@@ -180,6 +196,17 @@
 		7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelDetailViewController.xib; path = ViewControllers/HotelDetailViewController/HotelDetailViewController.xib; sourceTree = "<group>"; };
 		7F0214931F1CC12F00204D60 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image.png; path = images/image.png; sourceTree = "<group>"; };
 		7F0214951F1CDFCD00204D60 /* mapImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapImg.png; path = images/mapImg.png; sourceTree = "<group>"; };
+		7F54BC641F25F0D9007165CD /* contactWhiteNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contactWhiteNew.png; path = images/contactWhiteNew.png; sourceTree = "<group>"; };
+		7F54BC681F25F524007165CD /* white_bellNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white_bellNew.png; path = images/white_bellNew.png; sourceTree = "<group>"; };
+		7F54BC6A1F25F558007165CD /* white_calNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white_calNew.png; path = images/white_calNew.png; sourceTree = "<group>"; };
+		7F54BC6C1F25F606007165CD /* white_settingNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = white_settingNew.png; path = images/white_settingNew.png; sourceTree = "<group>"; };
+		7F54BC6E1F25F650007165CD /* powerNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = powerNew.png; path = images/powerNew.png; sourceTree = "<group>"; };
+		7F54BC711F261E23007165CD /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		7F54BC721F261E23007165CD /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		7F54BC761F2630AC007165CD /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopOverViewController.swift; path = ViewControllers/PopOverViewController/PopOverViewController.swift; sourceTree = "<group>"; };
+		7F54BC771F2630AC007165CD /* PopOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PopOverViewController.xib; path = ViewControllers/PopOverViewController/PopOverViewController.xib; sourceTree = "<group>"; };
+		7F54BC7B1F263530007165CD /* ScannerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerTableViewCell.swift; path = ViewControllers/SearchViewController/ScannerTableViewCell/ScannerTableViewCell.swift; sourceTree = "<group>"; };
+		7F54BC7C1F263530007165CD /* ScannerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScannerTableViewCell.xib; path = ViewControllers/SearchViewController/ScannerTableViewCell/ScannerTableViewCell.xib; sourceTree = "<group>"; };
 		7F6A4B8D1F0CBCDC002C398B /* RezList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RezList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6A4B901F0CBCDC002C398B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6A4B921F0CBCDC002C398B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +228,10 @@
 		7F6ECA951F1E3DA7009C2F2F /* HotelScreensViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelScreensViewController.xib; path = ViewControllers/HotelScreensViewController/HotelScreensViewController.xib; sourceTree = "<group>"; };
 		7F6ECA991F1E3F64009C2F2F /* HotelScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotelScreenCollectionViewCell.swift; path = ViewControllers/HotelScreensViewController/HotelScreenCell/HotelScreenCollectionViewCell.swift; sourceTree = "<group>"; };
 		7F6ECA9A1F1E3F64009C2F2F /* HotelScreenCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HotelScreenCollectionViewCell.xib; path = ViewControllers/HotelScreensViewController/HotelScreenCell/HotelScreenCollectionViewCell.xib; sourceTree = "<group>"; };
+		7FAF5C6B1F1F52CA00DEEF94 /* HomeViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "HomeViewController~ipad.xib"; path = "ViewControllers/HomeViewController/HomeViewController~ipad.xib"; sourceTree = "<group>"; };
+		7FAF5C6E1F1F58CB00DEEF94 /* SignupViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "SignupViewController~ipad.xib"; path = "ViewControllers/SignupViewController/SignupViewController~ipad.xib"; sourceTree = "<group>"; };
+		7FAF5C741F1F606700DEEF94 /* SearchViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "SearchViewController~ipad.xib"; path = "ViewControllers/SearchViewController/SearchViewController~ipad.xib"; sourceTree = "<group>"; };
+		7FAF5C781F1F758A00DEEF94 /* SearchTableViewCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "SearchTableViewCell~ipad.xib"; path = "ViewControllers/SearchViewController/SearchCell/SearchTableViewCell~ipad.xib"; sourceTree = "<group>"; };
 		7FB675101F1539C300CE927D /* ValidationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ValidationViewController.swift; path = ViewControllers/ValidationViewController/ValidationViewController.swift; sourceTree = "<group>"; };
 		7FC652C71F16243E00E51170 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = ViewControllers/ScannerViewController/ScannerViewController.swift; sourceTree = "<group>"; };
 		7FC652C81F16243E00E51170 /* ScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScannerViewController.xib; path = ViewControllers/ScannerViewController/ScannerViewController.xib; sourceTree = "<group>"; };
@@ -336,6 +367,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F54BC731F261E23007165CD /* UserNotifications.framework in Frameworks */,
+				7F54BC741F261E23007165CD /* UserNotificationsUI.framework in Frameworks */,
 				7FF25A081F0E5E95008FAF89 /* MapKit.framework in Frameworks */,
 				7FF259D21F0CFF85008FAF89 /* opencsv-3.9.jar in Frameworks */,
 				E8E93D0DD246C34B60D24D08 /* Pods_RezList.framework in Frameworks */,
@@ -375,6 +408,24 @@
 				7F0214901F1CBF7B00204D60 /* HotelDetailViewController.xib */,
 			);
 			name = HotelDetailViewController;
+			sourceTree = "<group>";
+		};
+		7F54BC751F263087007165CD /* PopOverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7F54BC761F2630AC007165CD /* PopOverViewController.swift */,
+				7F54BC771F2630AC007165CD /* PopOverViewController.xib */,
+			);
+			name = PopOverViewController;
+			sourceTree = "<group>";
+		};
+		7F54BC7A1F263512007165CD /* ScannerCell */ = {
+			isa = PBXGroup;
+			children = (
+				7F54BC7B1F263530007165CD /* ScannerTableViewCell.swift */,
+				7F54BC7C1F263530007165CD /* ScannerTableViewCell.xib */,
+			);
+			name = ScannerCell;
 			sourceTree = "<group>";
 		};
 		7F6A4B841F0CBCDB002C398B = {
@@ -435,6 +486,7 @@
 		7F6A4BC21F0CCD41002C398B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7F54BC751F263087007165CD /* PopOverViewController */,
 				7F6ECA931F1E3D71009C2F2F /* HotelScreensViewController */,
 				7F6ECA8E1F1E341B009C2F2F /* MapHouseViewController */,
 				7F02148E1F1CBF4E00204D60 /* HotelDetailViewController */,
@@ -462,6 +514,7 @@
 			children = (
 				7F6A4BC31F0CCE32002C398B /* HomeViewController.swift */,
 				7F6A4BC41F0CCE32002C398B /* HomeViewController.xib */,
+				7FAF5C6B1F1F52CA00DEEF94 /* HomeViewController~ipad.xib */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -523,9 +576,11 @@
 		7FF259551F0CE823008FAF89 /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7F54BC7A1F263512007165CD /* ScannerCell */,
 				7FF259F51F0E1921008FAF89 /* searchCell */,
 				7FF259511F0CE81A008FAF89 /* SearchViewController.swift */,
 				7FF259521F0CE81A008FAF89 /* SearchViewController.xib */,
+				7FAF5C741F1F606700DEEF94 /* SearchViewController~ipad.xib */,
 			);
 			name = SearchViewController;
 			sourceTree = "<group>";
@@ -533,6 +588,11 @@
 		7FF259561F0CFF3E008FAF89 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7F54BC6E1F25F650007165CD /* powerNew.png */,
+				7F54BC6C1F25F606007165CD /* white_settingNew.png */,
+				7F54BC6A1F25F558007165CD /* white_calNew.png */,
+				7F54BC681F25F524007165CD /* white_bellNew.png */,
+				7F54BC641F25F0D9007165CD /* contactWhiteNew.png */,
 				7F6ECA8C1F1E18FA009C2F2F /* back.png */,
 				7F0214951F1CDFCD00204D60 /* mapImg.png */,
 				7F0214931F1CC12F00204D60 /* image.png */,
@@ -641,6 +701,7 @@
 			children = (
 				7FF259F11F0D0FE7008FAF89 /* SignupViewController.swift */,
 				7FF259F21F0D0FE7008FAF89 /* SignupViewController.xib */,
+				7FAF5C6E1F1F58CB00DEEF94 /* SignupViewController~ipad.xib */,
 			);
 			name = SignupViewController;
 			sourceTree = "<group>";
@@ -650,6 +711,7 @@
 			children = (
 				7FF259F61F0E1946008FAF89 /* SearchTableViewCell.swift */,
 				7FF259F71F0E1946008FAF89 /* SearchTableViewCell.xib */,
+				7FAF5C781F1F758A00DEEF94 /* SearchTableViewCell~ipad.xib */,
 			);
 			name = searchCell;
 			sourceTree = "<group>";
@@ -676,6 +738,8 @@
 		7FF25A061F0E5E94008FAF89 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F54BC711F261E23007165CD /* UserNotifications.framework */,
+				7F54BC721F261E23007165CD /* UserNotificationsUI.framework */,
 				7FF25A071F0E5E95008FAF89 /* MapKit.framework */,
 				04AF75DA06E12F947CF5866B /* Pods_RezList.framework */,
 			);
@@ -897,8 +961,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FAF5C751F1F606700DEEF94 /* SearchViewController~ipad.xib in Resources */,
 				7FEB89671F17730400DBB152 /* search_white-32.png in Resources */,
 				7FF259B21F0CFF85008FAF89 /* contact.png in Resources */,
+				7F54BC6B1F25F558007165CD /* white_calNew.png in Resources */,
 				7FF259AD1F0CFF85008FAF89 /* calculator_icon.png in Resources */,
 				7FF259C11F0CFF85008FAF89 /* house_two.jpg in Resources */,
 				7FF259B61F0CFF85008FAF89 /* file-icon.png in Resources */,
@@ -914,12 +980,14 @@
 				7FF259D01F0CFF85008FAF89 /* on_off.png in Resources */,
 				7FF259E51F0CFF85008FAF89 /* splash.jpg in Resources */,
 				7F02148D1F1CB14700204D60 /* green_home.png in Resources */,
+				7F54BC691F25F524007165CD /* white_bellNew.png in Resources */,
 				7FF25A2B1F0F9769008FAF89 /* SettingTableViewCell2.xib in Resources */,
 				7F0214941F1CC12F00204D60 /* image.png in Resources */,
 				7FF259E91F0CFF85008FAF89 /* white_calculator.png in Resources */,
 				7FF259BC1F0CFF85008FAF89 /* himage.jpg in Resources */,
 				7FF259E11F0CFF85008FAF89 /* setting.png in Resources */,
 				7FF259A61F0CFF85008FAF89 /* bangalow.jpg in Resources */,
+				7FAF5C791F1F758A00DEEF94 /* SearchTableViewCell~ipad.xib in Resources */,
 				7FF259CB1F0CFF85008FAF89 /* logout.png in Resources */,
 				7FF259A11F0CFF85008FAF89 /* 02.jpg in Resources */,
 				7FF259CC1F0CFF85008FAF89 /* menu_drawer.png in Resources */,
@@ -931,9 +999,12 @@
 				7FF259D41F0CFF85008FAF89 /* person-128.png in Resources */,
 				7FEB89691F17730400DBB152 /* white_cal-32.png in Resources */,
 				7FF259DA1F0CFF85008FAF89 /* refresh_icon.png in Resources */,
+				7FAF5C6C1F1F52CA00DEEF94 /* HomeViewController~ipad.xib in Resources */,
+				7FAF5C6F1F1F58CB00DEEF94 /* SignupViewController~ipad.xib in Resources */,
 				7FF259C61F0CFF85008FAF89 /* icon-bell.png in Resources */,
 				7FF25A121F0E6225008FAF89 /* DashboardTableViewCell.xib in Resources */,
 				7FF25A301F0FA54E008FAF89 /* SupportViewController.xib in Resources */,
+				7F54BC651F25F0D9007165CD /* contactWhiteNew.png in Resources */,
 				7FC652D51F1643AF00E51170 /* search-32.png in Resources */,
 				7FF259DC1F0CFF85008FAF89 /* RezlistSitemap.pdf in Resources */,
 				7FF25A351F1356C1008FAF89 /* FlatFeeCalculatorViewController.xib in Resources */,
@@ -967,6 +1038,7 @@
 				7FF25A1C1F0F6FAF008FAF89 /* NotificationTableViewCell.xib in Resources */,
 				7FF259BE1F0CFF85008FAF89 /* hous.jpg in Resources */,
 				7FC652D41F1643AF00E51170 /* person-32.png in Resources */,
+				7F54BC6D1F25F606007165CD /* white_settingNew.png in Resources */,
 				7FF259AE1F0CFF85008FAF89 /* clock_icon.png in Resources */,
 				7FF259F91F0E1946008FAF89 /* SearchTableViewCell.xib in Resources */,
 				7FF259B11F0CFF85008FAF89 /* close_icon.png in Resources */,
@@ -981,6 +1053,7 @@
 				7FC652CA1F16243E00E51170 /* ScannerViewController.xib in Resources */,
 				7FF259B91F0CFF85008FAF89 /* groupTwo.png in Resources */,
 				7FF259A51F0CFF85008FAF89 /* bangalo.jpg in Resources */,
+				7F54BC701F25FC8C007165CD /* Info.plist in Resources */,
 				7FF259D11F0CFF85008FAF89 /* on.png in Resources */,
 				7F6ECA8D1F1E18FA009C2F2F /* back.png in Resources */,
 				7FF259C51F0CFF85008FAF89 /* ic_launcher in Resources */,
@@ -990,6 +1063,7 @@
 				7FF259541F0CE81A008FAF89 /* SearchViewController.xib in Resources */,
 				7FF259B71F0CFF85008FAF89 /* folder.png in Resources */,
 				7F6A4BC61F0CCE32002C398B /* HomeViewController.xib in Resources */,
+				7F54BC7E1F263530007165CD /* ScannerTableViewCell.xib in Resources */,
 				7FF259CF1F0CFF85008FAF89 /* on_icon.png in Resources */,
 				7FF25A171F0F6E37008FAF89 /* NotificationViewController.xib in Resources */,
 				7FF259B01F0CFF85008FAF89 /* clock.png in Resources */,
@@ -1008,8 +1082,10 @@
 				7FF259DE1F0CFF85008FAF89 /* search-icon-png-4.png in Resources */,
 				7FEB896A1F17730400DBB152 /* white_setting-32.png in Resources */,
 				7F6ECA921F1E3487009C2F2F /* MapHouseViewController.xib in Resources */,
+				7F54BC6F1F25F650007165CD /* powerNew.png in Resources */,
 				7FF259A21F0CFF85008FAF89 /* agent.png in Resources */,
 				7FF259B51F0CFF85008FAF89 /* file_icon.png in Resources */,
+				7F54BC791F2630AC007165CD /* PopOverViewController.xib in Resources */,
 				7FF259E41F0CFF85008FAF89 /* signin_bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1092,6 +1168,7 @@
 				7FF25A1B1F0F6FAF008FAF89 /* NotificationTableViewCell.swift in Sources */,
 				7FEB896E1F18EAC000DBB152 /* EmailUserListViewController.swift in Sources */,
 				7FF25A161F0F6E37008FAF89 /* NotificationViewController.swift in Sources */,
+				7F54BC7D1F263530007165CD /* ScannerTableViewCell.swift in Sources */,
 				7FF259FD1F0E238C008FAF89 /* FilterViewController.swift in Sources */,
 				7FF25A201F0F791D008FAF89 /* SettingViewController.swift in Sources */,
 				7FF25A251F0F899C008FAF89 /* SettingTableViewCell.swift in Sources */,
@@ -1099,6 +1176,7 @@
 				7FB675111F1539C300CE927D /* ValidationViewController.swift in Sources */,
 				7FF25A051F0E2C32008FAF89 /* DLRadioButton.m in Sources */,
 				7FF25A341F1356C1008FAF89 /* FlatFeeCalculatorViewController.swift in Sources */,
+				7F54BC781F2630AC007165CD /* PopOverViewController.swift in Sources */,
 				7FF25A2A1F0F9769008FAF89 /* SettingTableViewCell2.swift in Sources */,
 				7F6ECA961F1E3DA7009C2F2F /* HotelScreensViewController.swift in Sources */,
 				7FF259EE1F0D020C008FAF89 /* ProfileViewController.swift in Sources */,
@@ -1255,15 +1333,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
 				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c83b37d6-8f13-4c4a-b8e1-4a0a67ef9959";
-				PROVISIONING_PROFILE_SPECIFIER = "RezList APPSTORE";
+				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1277,15 +1355,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tyler Brown (B93PQE7TM3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tyler Brown (279RKCVBF6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tyler Brown (279RKCVBF6)";
 				DEVELOPMENT_TEAM = B93PQE7TM3;
 				INFOPLIST_FILE = RezList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RezList.com.RezList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c83b37d6-8f13-4c4a-b8e1-4a0a67ef9959";
-				PROVISIONING_PROFILE_SPECIFIER = "RezList APPSTORE";
+				PROVISIONING_PROFILE = "7409c606-ae00-46fa-b4b0-4512581ccd2a";
+				PROVISIONING_PROFILE_SPECIFIER = "RezList DEVELOPMENT";
 				SWIFT_OBJC_BRIDGING_HEADER = "RezList/RezList-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
