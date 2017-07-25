@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate {
@@ -18,6 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         
         // Override point for customization after application launch.
 
+        // iOS 10 support
+//        if #available(iOS 10, *) {
+//            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+//            application.registerForRemoteNotifications()
+//        }
+//            // iOS 9 support
+//        else if #available(iOS 9, *) {
+//            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
+//            // iOS 8 support
+//        else if #available(iOS 8, *) {
+//            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
+//            // iOS 7 support
+//        else {  
+//            application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
+//        }
+        
+        
+        //end
+        
+        
         let screenSize: CGRect = UIScreen.main.bounds
         
         let screenWidth = screenSize.width
@@ -109,6 +134,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UITabBarControllerDelegate
         return true
     }
 
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        let isRegisteredForLocalNotifications = UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert) ?? false
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let isRegisteredForLocalNotifications = UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert) ?? false
+    }
+//    -(void)application:(UIApplication *)application didRegisterUserNotificationSettings:   (UIUserNotificationSettings *)notificationSettings
+//    {
+//    if (notificationSettings.types) {
+//    NSLog(@"user allowed notifications");
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//    }else{
+//    NSLog(@"user did not allow notifications");
+//    // show alert here
+//    }
+//    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

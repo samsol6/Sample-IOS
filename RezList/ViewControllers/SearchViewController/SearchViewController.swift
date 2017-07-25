@@ -12,13 +12,15 @@ import AlamofireImage
 import MBProgressHUD
 import MapKit
 import CoreLocation
+import UserNotifications
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var mapView: UIView!
     @IBOutlet weak var topView: UIView!
     
     @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var scannerTbl: UITableView!
     @IBOutlet weak var tbl: UITableView!
     @IBOutlet weak var map: MKMapView!
     
@@ -29,6 +31,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     @IBOutlet weak var filterSearchLbl: UILabel!
     @IBOutlet weak var crossBtn: UIButton!
+
+    let locationMgr = CLLocationManager()
     
     var jsonArray = NSArray()
     var searchArray = NSMutableArray()
@@ -39,16 +43,59 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     var searchActive = Bool()
     var qrCodeActive = Bool()
     
+    var askLocation = Bool()
+    var askNotification = Bool()
     
     //new searching on the basis of the min price and max price
     var minPrice = Int()
     var maxPrice = Int()
     var bedFilter = Int()
     var areaFilter = Int()
+    
+    var isTapped = Bool()
+    
+    var myLocationCoordinate = CLLocationCoordinate2D()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //set delegate and data source of tableview to this controller
+        
+        isTapped = false
+        let tap = UITapGestureRecognizer(target: self, action: #selector
+            (tapFunction2))
+        self.tbl.addGestureRecognizer(tap)
+        
+        if(askLocation == true){
+            locationMgr.delegate = self
+            self.checkForLocationServices()
+            self.getLocation()
+            self.map.isUserInteractionEnabled = true
+            self.map.showsUserLocation = true
+        }
+        
+        if(askNotification == true){
+        // iOS 10 support
+            if #available(iOS 10, *) {
+                UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+                // iOS 9 support
+            else if #available(iOS 9, *) {
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+                // iOS 8 support
+            else if #available(iOS 8, *) {
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+                // iOS 7 support
+            else {
+                UIApplication.shared.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
+            }
+        }
+
+//        let isRegisteredForLocalNotifications = UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert) ?? false
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.showInfo(notification:)) , name: NSNotification.Name(rawValue: "qrCodeInfo"), object: nil)
@@ -84,8 +131,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.tbl.delegate = self
         self.tbl.dataSource = self
         
-        self.tbl.delegate = self
-        self.tbl.dataSource = self
+        self.scannerTbl.delegate = self
+        self.scannerTbl.dataSource = self
         
         //end
         
@@ -104,6 +151,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:100)
             appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
             appDelegate.window?.rootViewController = appDelegate.tabBarController
+            
+            self.scannerTbl.register(UINib(nibName: "ScannerTableViewCell", bundle: nil), forCellReuseIdentifier: "ScannerCell")
 
         }
         else if(deviceIdiom == .phone )
@@ -114,6 +163,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             appDelegate.tabBarController?.tabBar.frame = CGRect(x:0, y:self.topView.frame.size.height,width:screenWidth, height:50)
             appDelegate.tabBarController?.tabBar.backgroundColor = UIColor.black
             appDelegate.window?.rootViewController = appDelegate.tabBarController
+            
+            self.scannerTbl.register(UINib(nibName: "ScannerTableViewCell", bundle: nil), forCellReuseIdentifier: "ScannerCell")
+
+            
         }
         
             //correct code **********************
@@ -147,6 +200,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.scannerTbl.isHidden = true
          let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.tabBarController?.tabBar.isHidden = false
         
@@ -191,8 +245,71 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    //Mark: Notification Center
+    //Mark : Location service methods
+    func checkForLocationServices() {
+        if CLLocationManager.locationServicesEnabled(){
+            // Location services are available, so query the user’s location.
+            print("enabled")
+        } else {
+            print("disabled")
+            // Update your app’s UI to show that the location is unavailable.
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let currentLocation = locations.last!
+        print("Current location: \(currentLocation)")
+        let location = locations.first!
+        myLocationCoordinate = location.coordinate
+        print(myLocationCoordinate)
+        var coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+        //span of 0.01 makes the zoom factor of 3
+        coordinateRegion.span.longitudeDelta = 0.01
+        coordinateRegion.span.latitudeDelta = 0.01
+        map.setRegion(coordinateRegion, animated: true)
+        
+        let zoomWidth = map.visibleMapRect.size.width
+        let zoomFactor = Int(log2(zoomWidth)) - 9
+        print("...REGION DID CHANGE: ZOOM FACTOR \(zoomFactor)")
+//        locationMgr.stopUpdatingLocation()
+    }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let zoomWidth = map.visibleMapRect.size.width
+        let zoomFactor = Int(log2(zoomWidth)) - 9
+        print("...REGION DID CHANGE: ZOOM FACTOR \(zoomFactor)")
+    }
+    
+    // 2
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error \(error)")
+    }
+    
+    @IBAction func getLocation() {
+        // 1
+        let status  = CLLocationManager.authorizationStatus()
+        
+        // 2
+        if status == .notDetermined {
+            locationMgr.requestWhenInUseAuthorization()
+            return
+        }
+        
+        // 3
+        if status == .denied || status == .restricted {
+//            let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
+//            
+//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alert.addAction(okAction)
+//            
+//            present(alert, animated: true, completion: nil)
+//            return
+        }
+        
+        // 4
+        locationMgr.delegate = self
+        locationMgr.startUpdatingLocation()
+    }
+    //Mark: Notification Center
     func showInfo(notification:Notification) -> Void {
         self.qrCodeActive = true
         self.qrCodeLbl.isHidden = false
@@ -202,25 +319,61 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         self.qrCodeLbl.text = searchString
     }
     //end
+    
+    func tapFunction2(sender:UITapGestureRecognizer){
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.tabBarController?.tabBar.isHidden = false
+        
+        self.scannerTbl.isHidden = true
+    }
+    
+    func tapFunction(sender:UITapGestureRecognizer){
+        
+        print("hello")
+        let vc = ScannerViewController(
+            nibName: "ScannerViewController",
+            bundle: nil)
+        self.present(vc, animated: true, completion: nil)
+
+    }
     //Mark : UITable View Delegate Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(searchActive){
-            return self.searchArray.count
+        if(tableView == scannerTbl){
+            return 1
         }
         else{
-            return jsonArray.count
+            if(searchActive){
+                return self.searchArray.count
+            }
+            else{
+                return jsonArray.count
+            }
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(UIDevice.current.userInterfaceIdiom == .phone){
-            return 200
+        if(tableView == scannerTbl){
+            return 40
         }
         else{
-            return 400
+            if(UIDevice.current.userInterfaceIdiom == .phone){
+                return 200
+            }
+            else{
+                return 400
+            }
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if(tableView == scannerTbl){
+            let cell = scannerTbl.dequeueReusableCell(withIdentifier: "ScannerCell", for: indexPath) as! ScannerTableViewCell
+            cell.codeScanner.setTitle("QR/BarCode Scanner", for: .normal)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector
+                (tapFunction))
+            cell.codeScanner.addGestureRecognizer(tap)
+            return cell
+        }
         let cell = tbl.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         
         if(searchActive){
@@ -344,6 +497,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(tableView == scannerTbl){
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.tabBarController?.tabBar.isHidden = false
+            let vc = ScannerViewController(
+                nibName: "ScannerViewController",
+                bundle: nil)
+            self.present(vc, animated: true, completion: nil)
+            
+            return
+        }
         if(searchActive){
             let vc = HotelDetailViewController(
                 nibName: "HotelDetailViewController",
@@ -380,7 +544,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 count += 1
             }
         }
-        map.showAnnotations(map.annotations, animated: true)
+//        map.showAnnotations(map.annotations, animated: true)
+        
+        let status  = CLLocationManager.authorizationStatus()
+        
+        // 2
+        if status == .denied || status == .restricted {
+            print("denied")
+            let location = CLLocation(latitude: 36.778259, longitude: -119.417931)
+            var coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+            //span of 0.01 makes the zoom factor of 3
+            coordinateRegion.span.longitudeDelta = 0.01
+            coordinateRegion.span.latitudeDelta = 0.01
+            map.setRegion(coordinateRegion, animated: true)
+
+        }
+        else{
+            locationMgr.delegate = self
+            locationMgr.startUpdatingLocation()
+        }
+       
     }
     
     //Mark: getting data for this screen for houses for sale
@@ -458,11 +641,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     //Mark: UITextfield delegate functions
     
-    
-    func tapFunction(sender:UITapGestureRecognizer){
-        
-    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.searchField.becomeFirstResponder()
     }
@@ -506,14 +684,38 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     //end
-    
+
     @IBAction func goToScanner(_ sender: UIButton) {
-        let vc = ScannerViewController(
-            nibName: "ScannerViewController",
-            bundle: nil)
-        self.present(vc, animated: true, completion: nil)
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.tabBarController?.tabBar.isHidden = true
+//        appDelegate.tabBarController?.tabBar.barTintColor = UIColor.white.withAlphaComponent(0.2)
+//        appDelegate.tabBarController?.tabBar.appearance().isHidden = true
+        //        iew?.backgroundColor = UIColor(white: 1, alpha: 0.5)
+//         appDelegate.tabBarController?.tabBar.bringSubview(toFront: self.scannerTbl)
+        self.scannerTbl.isHidden = false
+        self.scannerTbl.reloadData()
+        
+//        var isTapped:Bool = false
+        if (isTapped){
+            
+            isTapped = false
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.tabBarController?.tabBar.isHidden = true
+            self.scannerTbl.isHidden = false
+            self.scannerTbl.reloadData()
+                        //Pause Stopwatch
+        }
+        else{
+            
+            isTapped = true
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.tabBarController?.tabBar.isHidden = false
+            self.scannerTbl.isHidden = true
+            self.scannerTbl.reloadData()
+            //Play Stopwatch
+        }
     }
- 
+    
     //MArk : Searching on the basis of min price and max price
     
     func getDataOnPrice(){
