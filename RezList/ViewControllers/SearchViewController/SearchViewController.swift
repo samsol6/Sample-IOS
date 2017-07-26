@@ -34,9 +34,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
 
     let locationMgr = CLLocationManager()
     
-    var jsonArray = NSArray()
+    var jsonArray = NSMutableArray()
+    var jsonNewArray = NSMutableArray()
+    
     var searchArray = NSMutableArray()
     var myLocations = NSMutableArray()
+    var cityName = String()
     
     var addressArray = NSMutableArray()
     
@@ -60,19 +63,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         //set delegate and data source of tableview to this controller
         
+//        self.tbl.isUserInteractionEnabled = true
+//        self.tbl.isMultipleTouchEnabled = false
+        
+        
         isTapped = false
-        let tap = UITapGestureRecognizer(target: self, action: #selector
-            (tapFunction2))
-        self.tbl.addGestureRecognizer(tap)
+       // let tap = UITapGestureRecognizer(target: self, action: #selector
+       //    (tapFunction2))
+       // self.view.addGestureRecognizer(tap)
         
         if(askLocation == true){
             locationMgr.delegate = self
-            self.checkForLocationServices()
+//            self.checkForLocationServices()
             self.getLocation()
-            self.map.isUserInteractionEnabled = true
+//            self.map.isUserInteractionEnabled = true
             self.map.showsUserLocation = true
         }
+//        self.map.isUserInteractionEnabled = true
         
+        //about notification
         if(askNotification == true){
         // iOS 10 support
             if #available(iOS 10, *) {
@@ -194,9 +203,78 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         self.searchField.layer.borderColor = UIColor(red:1.00, green:0.77, blue:0.77, alpha:1.0).cgColor
         self.searchField.layer.borderWidth = 0.8
-        getData()
+//        getData()
+//        self.getCityName()
+        Timer.scheduledTimer(timeInterval: TimeInterval(2), target: self, selector: #selector(self.getCityName), userInfo: nil, repeats: false)
+//        Timer.scheduledTimer(timeInterval: TimeInterval(4), target: self, selector: #selector(self.getData), userInfo: nil, repeats: false)
+        
+        Timer.scheduledTimer(timeInterval: TimeInterval(4), target: self, selector: #selector(self.getRangeDistance), userInfo: nil, repeats: false)
+
+        
     }
 
+    func getRangeDistance(){
+        
+        var myLatitude = Double()
+        var myLongitude = Double()
+        if let myLat : Double = UserDefaults.standard.value(forKey: "latitude") as? Double{
+            myLatitude = myLat
+        }
+        if let myLong : Double = UserDefaults.standard.value(forKey: "longitude") as? Double{
+            myLongitude = myLong
+        }
+        
+        var offset = 1.0 / 1000.0;
+        var latMax = myLatitude + offset;
+        var latMin = myLatitude - offset;
+        
+        
+        // With longitude, things are a bit more complex.
+        // 1 degree of longitude = 111km only at equator (gradually shrinks to zero at the poles)
+        // So need to take into account latitude too, using cos(lat).
+        
+        var lngOffset = offset * cos(myLocationCoordinate.latitude * M_PI / 180.0);
+        var lngMax = myLongitude + lngOffset;
+        var lngMin = myLongitude - lngOffset;
+        
+        print("min latitude = \(latMin)")
+        print("max latitude = \(latMax)")
+        print("min longitude = \(lngMin)")
+        print("max longitude = \(lngMax)")
+        
+        var z1 = myLatitude+0.0100
+        var z2 = myLongitude+0.0100
+        
+        var z3 = myLatitude-0.0100
+        var z4 = myLongitude-0.0100
+        
+        print("first point" , z1, z2)
+        print("first point" , z1, z4)
+        print("first point" , z3, z2)
+        print("first point" , z3, z4)
+        
+        var firstLoc = CLLocation(latitude: myLatitude, longitude: myLongitude)
+        var secondLoc = CLLocation(latitude: z1, longitude: z2)
+        print("maximum distance")
+        print(firstLoc.distance(from: secondLoc))
+        
+        firstLoc = CLLocation(latitude: myLatitude, longitude: myLongitude)
+        secondLoc = CLLocation(latitude: z1, longitude: z4)
+        print("maximum latitude, minimum longitude")
+        print(firstLoc.distance(from: secondLoc))
+        
+        firstLoc = CLLocation(latitude: myLatitude, longitude: myLongitude)
+        secondLoc = CLLocation(latitude: z3, longitude: z2)
+        print("minimum latitude , maximum longitude")
+        print(firstLoc.distance(from: secondLoc))
+        
+        firstLoc = CLLocation(latitude: myLatitude, longitude: myLongitude)
+        secondLoc = CLLocation(latitude: z3, longitude: z4)
+        print("minimum distance")
+        print(firstLoc.distance(from: secondLoc))
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -250,16 +328,27 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         if CLLocationManager.locationServicesEnabled(){
             // Location services are available, so query the user’s location.
             print("enabled")
+            locationMgr.delegate = self
+            locationMgr.startUpdatingLocation()
         } else {
             print("disabled")
+            let location = CLLocation(latitude: 36.778259, longitude: -119.417931)
+            myLocationCoordinate = location.coordinate
             // Update your app’s UI to show that the location is unavailable.
         }
+//        Timer.scheduledTimer(timeInterval: TimeInterval(10), target: self, selector: #selector(self.getPropertiesInRange), userInfo: nil, repeats: false)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation = locations.last!
         print("Current location: \(currentLocation)")
         let location = locations.first!
         myLocationCoordinate = location.coordinate
+        
+        //saving into userdefaults.
+        UserDefaults.standard.set(myLocationCoordinate.latitude, forKey: "latitude")
+        UserDefaults.standard.set(myLocationCoordinate.longitude, forKey: "longitude")
+        UserDefaults.standard.synchronize()
+        
         print(myLocationCoordinate)
         var coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
         //span of 0.01 makes the zoom factor of 3
@@ -296,18 +385,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         
         // 3
         if status == .denied || status == .restricted {
-//            let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable Location Services in Settings", preferredStyle: .alert)
-//            
-//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            alert.addAction(okAction)
-//            
-//            present(alert, animated: true, completion: nil)
-//            return
         }
         
+        if CLLocationManager.locationServicesEnabled(){
+//            locationMgr.delegate = self
+            locationMgr.startUpdatingLocation()
+        }
         // 4
-        locationMgr.delegate = self
-        locationMgr.startUpdatingLocation()
+//        locationMgr.delegate = self
+//        locationMgr.startUpdatingLocation()
     }
     //Mark: Notification Center
     func showInfo(notification:Notification) -> Void {
@@ -347,7 +433,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 return self.searchArray.count
             }
             else{
-                return jsonArray.count
+//                return jsonArray.count
+                return self.jsonArray.count
+                
             }
         }
     }
@@ -375,6 +463,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             return cell
         }
         let cell = tbl.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
+        
+//        cell.isUserInteractionEnabled = true
         
         if(searchActive){
             let propertyObj : NSDictionary = (((self.searchArray.object(at: indexPath.row) as AnyObject).value(forKey: "property")as AnyObject)as? NSDictionary)!
@@ -496,18 +586,24 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("selected")
+        
+        return indexPath
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(tableView == scannerTbl){
-            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.tabBarController?.tabBar.isHidden = false
-            let vc = ScannerViewController(
-                nibName: "ScannerViewController",
-                bundle: nil)
-            self.present(vc, animated: true, completion: nil)
-            
-            return
-        }
+//        if(tableView == scannerTbl){
+//            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+//            appDelegate.tabBarController?.tabBar.isHidden = false
+//            let vc = ScannerViewController(
+//                nibName: "ScannerViewController",
+//                bundle: nil)
+//            self.present(vc, animated: true, completion: nil)
+//            
+//            return
+//        }
         if(searchActive){
             let vc = HotelDetailViewController(
                 nibName: "HotelDetailViewController",
@@ -544,27 +640,86 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 count += 1
             }
         }
-//        map.showAnnotations(map.annotations, animated: true)
+        map.showAnnotations(map.annotations, animated: true)
         
-        let status  = CLLocationManager.authorizationStatus()
         
-        // 2
-        if status == .denied || status == .restricted {
-            print("denied")
-            let location = CLLocation(latitude: 36.778259, longitude: -119.417931)
-            var coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
-            //span of 0.01 makes the zoom factor of 3
-            coordinateRegion.span.longitudeDelta = 0.01
-            coordinateRegion.span.latitudeDelta = 0.01
-            map.setRegion(coordinateRegion, animated: true)
-
-        }
-        else{
-            locationMgr.delegate = self
-            locationMgr.startUpdatingLocation()
-        }
+        //*********** This code is for zoom in map for specific coordinates ******************
+//        let status  = CLLocationManager.authorizationStatus()
+//        
+//        // 2
+//        if status == .denied || status == .restricted {
+//            print("denied")
+//            let location = CLLocation(latitude: 36.778259, longitude: -119.417931)
+//            myLocationCoordinate = location.coordinate
+//            var coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 500, 500)
+//            //span of 0.01 makes the zoom factor of 3
+//            coordinateRegion.span.longitudeDelta = 0.01
+//            coordinateRegion.span.latitudeDelta = 0.01
+//            map.setRegion(coordinateRegion, animated: true)
+//
+//        }
+//        else{
+//            locationMgr.delegate = self
+//            locationMgr.startUpdatingLocation()
+//        }
+        
+        //************ end code ******************************
+        
+//        Timer.scheduledTimer(timeInterval: TimeInterval(10), target: self, selector: #selector(self.getPropertiesInRange), userInfo: nil, repeats: false)
        
     }
+    
+    //Mark : getting city name on the basis of lat/long
+    
+    func getCityName(){
+        // Add below code to get address for touch coordinates.
+        
+        let geoCoder = CLGeocoder()
+        var myLatitude = Double()
+        var myLongitude = Double()
+        if let myLat : Double = UserDefaults.standard.value(forKey: "latitude") as? Double{
+            myLatitude = myLat
+        }
+        if let myLong : Double = UserDefaults.standard.value(forKey: "longitude") as? Double{
+            myLongitude = myLong
+        }
+        let location = CLLocation(latitude: myLatitude, longitude: myLongitude)
+        geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            // Address dictionary
+            print(placeMark.addressDictionary as Any)
+            
+            // Location name
+            if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
+                print(locationName)
+            }
+            // Street address
+            if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
+                print(street)
+            }
+            // City
+            if let city = placeMark.addressDictionary!["City"] as? NSString {
+                print(city)
+                self.cityName = (city as? String)!
+            }
+            // Zip code
+            if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+                print(zip)
+            }
+            // Country
+            if let country = placeMark.addressDictionary!["Country"] as? NSString {
+                print(country)
+            }
+            
+            self.getData()
+        })
+    }
+    
+    //end
     
     //Mark: getting data for this screen for houses for sale
     
@@ -573,8 +728,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         loadingNotification.label.text = "Loading"
 
         let Auth_header : HTTPHeaders = [ "Authorization" : "Basic c2ltcGx5cmV0czpzaW1wbHlyZXRz" ]
-        let ApiUrl = "https://api.simplyrets.com/properties?limit=500&lastId=0"
+//        let ApiUrl = "https://api.simplyrets.com/properties?limit=500&lastId=0"
+//        let ApiUrl = "https://api.simplyrets.com/properties?limit=30&cities=cypress&count=true"
+
+        //new api url for fetching data on the basis of the user's current city name
         
+        let ApiUrl = "https://api.simplyrets.com/properties?limit=500&cities="+self.cityName+"&count=true"
+        
+        print(ApiUrl)
         Alamofire.request(ApiUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Auth_header).responseJSON { response in
             debugPrint("response is: ",response)
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -582,13 +743,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
                 
                 if let json : NSArray = response.result.value as? NSArray{
                     print(json)
-                    self.jsonArray = json
+                    self.jsonArray = json.mutableCopy() as! NSMutableArray
                     
-                    self.getGeoLocation()
+//                    self.getGeoLocation()
                     
                     if(self.minPrice != 0 || self.maxPrice != 0){
                         self.getDataOnPrice()
                     }
+                    
+                    // This is my code for showing only those properties whose distance from my location is in the range of 5000 meters
+                    
+                    self.getPropertiesInRange()
                     self.tbl.reloadData()
                 }
             }
@@ -636,6 +801,59 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
         //end
 
+    //Mark : New editing of code to show only those propertie whose distance from my location is 5000 meters
+    
+    func getPropertiesInRange(){
+//        self.jsonArray.removeAllObjects()
+        
+        var count = 0
+        while ( count < jsonArray.count){
+            let geoLocationObj : NSDictionary = (((jsonArray.object(at: count) as AnyObject).value(forKey: "geo")as AnyObject)as? NSDictionary)!
+            
+            var latitude = Double()
+            var longitude = Double()
+            if let lat: Double = (((geoLocationObj as AnyObject).value(forKey: "lat")as AnyObject)as? Double)!{
+                latitude = lat
+            }
+            if let long: Double = (((geoLocationObj as AnyObject).value(forKey: "lng")as AnyObject)as? Double)!{
+                longitude = long
+            }
+            
+            //making cllocation objects to calculate the distance
+            print(latitude)
+            print(longitude)
+//            print(myLocationCoordinate.latitude)
+//            print(myLocationCoordinate.longitude)
+            
+            var myLatitude = Double()
+            var myLongitude = Double()
+            if let myLat : Double = UserDefaults.standard.value(forKey: "latitude") as? Double{
+                myLatitude = myLat
+            }
+            if let myLong : Double = UserDefaults.standard.value(forKey: "longitude") as? Double{
+                myLongitude = myLong
+            }
+            print(myLocationCoordinate.latitude)
+            print(myLocationCoordinate.longitude)
+            
+            let coordinate₀ = CLLocation(latitude: latitude, longitude: longitude)
+            let coordinate₁ = CLLocation(latitude: myLatitude, longitude: myLongitude)
+            
+            let distanceInMeters = coordinate₀.distance(from: coordinate₁) // result is in meters
+            print(distanceInMeters)
+            
+            
+            if(distanceInMeters <= 5000.0){
+                self.jsonNewArray.add(self.jsonArray.object(at: count))
+            }
+            
+            count += 1
+        }
+        self.jsonArray = self.jsonNewArray
+        
+        self.getGeoLocation()
+//        self.tbl.reloadData()
+    }
     
     //end...
     

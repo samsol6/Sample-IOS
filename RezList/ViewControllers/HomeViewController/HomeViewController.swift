@@ -84,6 +84,8 @@ class HomeViewController: ValidationViewController, UITextFieldDelegate {
                 let vc = SearchViewController(
                 nibName: "SearchViewController",
                 bundle: nil)
+                vc.askLocation = true
+                vc.askNotification = true
             self.present(vc, animated: true, completion: nil)
             }
         }
