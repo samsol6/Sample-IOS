@@ -214,6 +214,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
 
     func getRangeDistance(){
+        self.tbl.isHidden = true
+        self.mapView.isHidden = false
+
         
         var myLatitude = Double()
         var myLongitude = Double()
@@ -273,8 +276,48 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         print("minimum distance")
         print(firstLoc.distance(from: secondLoc))
         
+        
+        
+        var annotation = MKPointAnnotation()
+        var title : String = "wow"
+        var lat : Double = z1
+        var long : Double = z2
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        map.addAnnotation(annotation)
+        
+        //2nd
+         annotation = MKPointAnnotation()
+         title = "wow"
+         lat = z1
+         long  = z4
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        map.addAnnotation(annotation)
+        
+        //3rd
+        annotation = MKPointAnnotation()
+        title = "wow"
+        lat = z3
+        long  = z2
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        map.addAnnotation(annotation)
+        
+        //4th
+        annotation = MKPointAnnotation()
+        title = "wow"
+        lat = z3
+        long  = z4
+        annotation.title = title
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        map.addAnnotation(annotation)
+        
+        map.showAnnotations(map.annotations, animated: true)
+
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -623,6 +666,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     @IBAction func mapBtnClicked(_ sender: UIButton) {
+        
+        self.getRangeDistance()
+        return
         self.tbl.isHidden = true
         self.mapView.isHidden = false
         
